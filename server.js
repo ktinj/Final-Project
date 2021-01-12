@@ -29,8 +29,8 @@ app.use(passport.session());
 app.use(routes);
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.ATLAS_URL || "mongodb://localhost/Perch", {
-	
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/Perch", {
+
 useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
