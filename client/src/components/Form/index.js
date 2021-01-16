@@ -1,4 +1,5 @@
 import React from "react";
+import "./form.scss";
 
 // This file exports the Input, TextArea, and FormBtn components
 
@@ -30,7 +31,7 @@ export function FormBtn(props) {
 		<button
 			{...props}
 			style={{ marginLeft: 10 }}
-			className='btn btn-dark rounded-0'>
+			className='btn'>
 			{props.children}
 		</button>
 	);
@@ -39,28 +40,27 @@ export function FormBtn(props) {
 export function Form({ searchTerm, handleInputChange, handleFormSubmit }) {
 	return (
 		<form>
-			<div className="form-group">
-				<label htmlFor="Search">
-					<strong>Search Recommendations Below</strong>
-				</label>
+			<p>What are you looking for?</p>
+			<div className="search-bar">
 				<input className="form-control"
 					id="search-title"
 					type="text"
 					value={searchTerm}
 					name="searchTerm"
-					placeholder="Search"
+					placeholder=""
 					onChange={handleInputChange}
 					required
 				/>
+		
 			</div>
-			<div className="pull-right">
+			{/* <div className="pull-right"> */}
 				<button
-					className="btn btn-dark float-right"
+					className="button"
 					onClick={handleFormSubmit}
 					type="submit">
 					Search
                 </button>
-			</div>
+			{/* </div> */}
 		</form>
 	)
 }

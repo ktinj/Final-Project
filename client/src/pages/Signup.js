@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import Footer from "../components/Footer";
 import userAPI from "../utils/userAPI";
 import {  Redirect, Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
@@ -48,32 +48,31 @@ class Signup extends Component {
       <Container fluid>
         <Row>
           <Col size="12">
- 
             <form>
               <Input
                 value={this.state.username}
                 onChange={this.handleInputChange}
                 name="username"
-                placeholder="username (required)"
+                placeholder="username"
               />
               <Input
                 value={this.state.email}
                 onChange={this.handleInputChange}
                 name="email"
-                placeholder="email (required)"
+                placeholder="email"
               />
               <Input
                 value={this.state.password}
                 onChange={this.handleInputChange}
                 name="password"
-                placeholder="(required)"
+                placeholder="password"
                 type="password"
               />
               <Input
                 value={this.state.passwordConf}
                 onChange={this.handleInputChange}
                 name="passwordConf"
-                placeholder="(required)"
+                placeholder="confirm password"
                 type="password"
               />
               
@@ -81,19 +80,18 @@ class Signup extends Component {
                 // disabled={!(this.state.email && this.state.password)}
                 onClick={this.handleFormSubmit}
               >
-                signup
+                Signup
               </FormBtn>
               <Link to="/">
-               <FormBtn> Login </FormBtn>
-             </Link>
+              <FormBtn> Login </FormBtn>
+            </Link>
             </form>
           </Col>
           
         </Row>
         {/* redirect on authenticated */}
         {this.props.authenticated ? <Redirect to='/comments'/>: <div></div>}
-
-
+<Footer />
       </Container>
     );
   }

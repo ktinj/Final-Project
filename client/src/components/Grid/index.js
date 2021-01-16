@@ -1,4 +1,5 @@
 import React from "react";
+import "./grid.scss";
 
 // Exporting the Container, Row, and Col components from this file
 
@@ -7,7 +8,7 @@ export function Container({ fluid, children }) {
   return <div 
             className={`container${fluid ? "-fluid main-container pt-3" : " main-container pt-3"}`} 
             >
-               {children}
+              {children}
             </div>;
 }
 

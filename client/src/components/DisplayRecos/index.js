@@ -3,7 +3,7 @@ import { ListItem } from "../List";
 import { Row, Col } from "../Grid";
 import "./style.css";
 
-function DisplayBook({ reco_name, reco_description, reco_link, reco_pic, reco_keywords, reco_date, Button }) {
+function DisplayRecos({ reco_name, reco_description, reco_link, reco_pic, reco_keywords, reco_date, Button }) {
     return (
         <ListItem>
             <Row className="flex-wrap-reverse">
@@ -12,7 +12,7 @@ function DisplayBook({ reco_name, reco_description, reco_link, reco_pic, reco_ke
                 </Col>
                 <Col size="md-12">
                     <div className="btn-container">
-                        <a className="btn btn-light" target="_blank" rel="noopener noreferror" href={reco_link}>
+                        <a className="btn" target="_blank" rel="noopener noreferror" href={reco_link}>
                             See Recommendation
                         </a>
                         <Button />
@@ -38,4 +38,4 @@ function DisplayBook({ reco_name, reco_description, reco_link, reco_pic, reco_ke
     )
 }
 
-export default DisplayBook;
+export default DisplayRecos;

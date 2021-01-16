@@ -11,7 +11,7 @@ class Search extends Component {
     state = {
         recoResults: [],
         searchTerm: "",
-        prompt: "Search For a Product Recommendation"
+        prompt: "Search For a Product"
     }
 
 
@@ -62,7 +62,7 @@ class Search extends Component {
             <Container>
                 <Row>
                     <Col size="md-12">
-                        <Card title="Search For a Book">
+                        <Card>
                             <Form
                                 handleInputChange={this.handleInputChange}
                                 handleFormSubmit={this.handleFormSubmit}

@@ -1,11 +1,13 @@
 import React from "react";
+import "./card.scss";
+
 
 function Card({ title, children }) {
   return (
-    <div className="card text-center text-light bg-dark m-3">
-      <div className="card-header text-left">
+    <div className="card text-center m-3">
+      
         <strong>{title} </strong>
-      </div>
+      
       <div className="card-body ">{children}</div>
     </div>
   );

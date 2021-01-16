@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-
 import userAPI from "../utils/userAPI";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { Input, FormBtn } from "../components/Form";
+import Footer from "../components/Footer";
 
 class Login extends Component {
   state = {
@@ -31,7 +31,7 @@ class Login extends Component {
       })
         .then(res => {
           if(res.status === 200 ){
-             this.props.setUserState(res.data)
+            this.props.setUserState(res.data)
           }
         })
         .catch(err => console.log(err));
@@ -42,7 +42,7 @@ class Login extends Component {
     return (
       <Container fluid>
         <Row>
-          <Col size="12">
+          <Col size="md-12">
             <form>
               <Input
                 value={this.state.email}
@@ -54,7 +54,7 @@ class Login extends Component {
                 value={this.state.password}
                 onChange={this.handleInputChange}
                 name="password"
-                placeholder="(required)"
+                placeholder="password (required)"
                 type="password"
               />
               
@@ -62,14 +62,15 @@ class Login extends Component {
                 disabled={!(this.state.email && this.state.password)}
                 onClick={this.handleFormSubmit}
               >
-                Log in
+                Login
               </FormBtn>
-             <Link to="/signup">
-               <FormBtn> Signup </FormBtn>
-             </Link>
+            <Link to="/signup">
+              <FormBtn> Signup </FormBtn>
+            </Link>
             </form>
           </Col>
         </Row>
+        <Footer />
       </Container>
     );
   }
