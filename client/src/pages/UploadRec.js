@@ -41,7 +41,7 @@ function UploadRec({ username }) {
         //set user after successful component mount
         setFormObject({
             reco_name: "title",
-            reco_pic: "",
+            // reco_pic: "",
             reco_link: "link",
             reco_description: "description",
             reco_keywords: "keywords",
@@ -101,8 +101,8 @@ function UploadRec({ username }) {
     //on submit for the image upload
     const onSubmit = async e => {
         e.preventDefault();
-        const formData = new FormData();
-        formData.append('file', file);
+        // const formData = new FormData();
+        // formData.append('file', file);
 
         // try {
         //     const res = await axios.post('/api/uploadRec', formData, {
@@ -134,19 +134,21 @@ function UploadRec({ username }) {
         //     }
         // }
 
-        try {
+       
 
-            API.uploadReco(formData, {
-                'Content-Type': 'multipart/form-data'
-            },
+            API.uploadReco(
+                //form data will be fields
                 {
                     reco_name: formObject.reco_name,
                     // reco_pic: formObject.reco_pic,
                     reco_link: formObject.reco_link,
                     reco_description: formObject.reco_description,
                     reco_keywords: formObject.reco_keywords,
-                    reco_pic: formObject.reco_pic,
                     username: formObject.username
+                }, 
+                //pic file will be files
+                {
+                    reco_pic: file
                 })
                 .then(loadMyRecos)
                 .then(() => setFormObject({
@@ -156,12 +158,7 @@ function UploadRec({ username }) {
                     reco_description: "",
                     reco_keywords: "",
                     username: ""
-                }))
-
-
-        } catch (err) {
-            console.log(err);
-        }
+                })).catch(err => console.log(err))
 
 
     };
@@ -191,8 +188,8 @@ function UploadRec({ username }) {
                                             className='custom-file-input'
                                             id='customFile'
                                             onChange={onChange}
-                                            name="reco-pic"
-                                            value={formObject.reco_pic}
+                                            name="reco_pic"
+                                            value={file}
                                         />
                                         <label className='custom-file-label' htmlFor='customFile'>
                                             {filename}

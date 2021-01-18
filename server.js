@@ -3,14 +3,16 @@ const mongoose = require("mongoose");
 const { mongoOptions, sessionOptions } = require("./utils/config");
 const routes = require("./routes");
 const app = express();
-const fileUpload = require("express-fileupload");
+// const fileUpload = require("express-fileupload");
 const session = require("express-session");
 // Requiring passport as we've configured it
 const passport = require("./utils/passport");
 const logger = require("morgan");
+// const formidable = require('formidable');
 
 const PORT = process.env.PORT || 3001;
-app.use(fileUpload());
+// app.use(fileUpload());
+// app.use(formidable());
 
 // logging (development)
 app.use(logger("dev"));
