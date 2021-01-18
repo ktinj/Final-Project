@@ -104,47 +104,50 @@ function UploadRec({ username }) {
         const formData = new FormData();
         formData.append('file', file);
 
+        // try {
+        //     const res = await axios.post('/api/uploadRec', formData, {
+        //         headers: {
+        //             'Content-Type': 'multipart/form-data'
+        //         },
+        //         onUploadProgress: progressEvent => {
+        //             setUploadPercentage(
+        //                 parseInt(
+        //                     Math.round((progressEvent.loaded * 100) / progressEvent.total)
+        //                 )
+        //             );
+
+        //             // Clear percentage
+        //             setTimeout(() => setUploadPercentage(0), 10000);
+        //         }
+        //     });
+
+        //     const { fileName, filePath } = res.data;
+
+        //     setUploadedFile({ fileName, filePath });
+
+        //     setMessage('File Uploaded');
+        // } catch (err) {
+        //     if (err.response.status === 500) {
+        //         setMessage('There was a problem with the server');
+        //     } else {
+        //         setMessage(err.response.data.msg);
+        //     }
+        // }
+
         try {
-            const res = await axios.post('/api/uploadRec', formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                },
-                onUploadProgress: progressEvent => {
-                    setUploadPercentage(
-                        parseInt(
-                            Math.round((progressEvent.loaded * 100) / progressEvent.total)
-                        )
-                    );
 
-                    // Clear percentage
-                    setTimeout(() => setUploadPercentage(0), 10000);
-                }
-            });
-
-            const { fileName, filePath } = res.data;
-
-            setUploadedFile({ fileName, filePath });
-
-            setMessage('File Uploaded');
-        } catch (err) {
-            if (err.response.status === 500) {
-                setMessage('There was a problem with the server');
-            } else {
-                setMessage(err.response.data.msg);
-            }
-        }
-
-        try {
-
-            API.uploadReco({
-                reco_name: formObject.reco_name,
-                // reco_pic: formObject.reco_pic,
-                reco_link: formObject.reco_link,
-                reco_description: formObject.reco_description,
-                reco_keywords: formObject.reco_keywords,
-                reco_pic: formObject.reco_pic,
-                username: formObject.username
-            })
+            API.uploadReco(formData, {
+                'Content-Type': 'multipart/form-data'
+            },
+                {
+                    reco_name: formObject.reco_name,
+                    // reco_pic: formObject.reco_pic,
+                    reco_link: formObject.reco_link,
+                    reco_description: formObject.reco_description,
+                    reco_keywords: formObject.reco_keywords,
+                    reco_pic: formObject.reco_pic,
+                    username: formObject.username
+                })
                 .then(loadMyRecos)
                 .then(() => setFormObject({
                     reco_name: "",
@@ -154,13 +157,13 @@ function UploadRec({ username }) {
                     reco_keywords: "",
                     username: ""
                 }))
-                
 
-        } catch(err) {
-           console.log(err);
+
+        } catch (err) {
+            console.log(err);
         }
 
-     
+
     };
 
     return <>
@@ -182,23 +185,23 @@ function UploadRec({ username }) {
                                 <div className="file-upload">
                                     {message ? <Message msg={message} /> : null}
                                     {/* <form onSubmit={onSubmit}> */}
-                                        <div className='custom-file mb-4'>
-                                            <input
-                                                type='file'
-                                                className='custom-file-input'
-                                                id='customFile'
-                                                onChange={onChange}
-                                                name="reco-pic"
-                                                value={formObject.reco_pic}
-                                            />
-                                            <label className='custom-file-label' htmlFor='customFile'>
-                                                {filename}
-                                            </label>
-                                        </div>
+                                    <div className='custom-file mb-4'>
+                                        <input
+                                            type='file'
+                                            className='custom-file-input'
+                                            id='customFile'
+                                            onChange={onChange}
+                                            name="reco-pic"
+                                            value={formObject.reco_pic}
+                                        />
+                                        <label className='custom-file-label' htmlFor='customFile'>
+                                            {filename}
+                                        </label>
+                                    </div>
 
-                                        <Progress percentage={uploadPercentage} />
+                                    <Progress percentage={uploadPercentage} />
 
-                                        {/* <input
+                                    {/* <input
                                             type='submit'
                                             value='Upload'
                                             className='btn btn-primary btn-block mt-4'

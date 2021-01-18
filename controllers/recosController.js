@@ -24,19 +24,22 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  create: function (req, res) {
+  create: function (formData, formDataHeader, recoData, res) {
     // if no user on the session
     if (!req.user) return res.status(401).end('user isnt authenticated')
     if (req.files === null) {
       return res.status(400).json({ msg: 'No file uploaded' });
     }
-    console.log("[node:] ", req.files.file)
-    const file = req.files.file;
+    console.log("[node:0", formData);
+    console.log("[node:] ", formData.files.file)
+    const file = formData.files.file;
+    console.log("[node:3]", recoData.body)
+   
 
     console.log("[node1:] ", file)
     console.log("[node2:] ", file.name)
     db.Recos
-      .create({ username: req.body.username, reco_name: req.body.reco_name, reco_pic:{data:file.data, contentType:file.mimetype}, reco_link: req.body.reco_link, reco_discription: req.body.reco_discription, reco_keywords: req.body.reco_keywords })
+      .create({ username: recoData.username, reco_name: recoData.reco_name, reco_pic:{data:file.data, contentType:file.mimetype}, reco_link: recoData.reco_link, reco_discription: recoData.reco_discription, reco_keywords: recoData.reco_keywords })
       // .then(dbModel => res.json(dbModel).then(console.log(dbModel)))
       .then(({ _id }) => db.User.findOneAndUpdate({ _id: req.user._id }, { $push: { recos: _id } }, { new: true }))
       .then(dbModel => res.json(dbModel))

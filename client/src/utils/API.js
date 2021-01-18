@@ -2,9 +2,9 @@ import axios from "axios";
 
 export default {
   //saves a reco to the database
-  uploadReco: function (recoData) {
+  uploadReco: function (formData, formDataHeader, recoData) {
     // console.log(recoData)
-    return axios.post("/api/uploadRec", recoData);
+    return axios.post("/api/uploadRec", formData, formDataHeader, recoData);
   },
 
   // Gets all comments
