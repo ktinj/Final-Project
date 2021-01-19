@@ -57,9 +57,12 @@ function UploadRec({ username }) {
     function loadMyRecos() {
         // console.log("load my recos");
         API.getMyRecos()
-            .then(d => console.log(d))
+            .then(d => { console.log(d); return d })
             .then(res => setRecoState({ ...recoState, recos: res.data }))
             .catch(err => console.log(err));
+        //not returning image because image on /api/uploadImg
+        API.getmyImg()
+            .then(res => { console.log(res);  return res })
     }
 
     //Handle input change for form when user is uploading a reco

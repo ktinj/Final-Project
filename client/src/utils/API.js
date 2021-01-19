@@ -7,15 +7,15 @@ export default {
     return axios.post("/api/uploadRec", recoData);
   },
 
-  // Gets all comments
+  // Gets all recs a user uploaded 
   getMyRecos: function () {
     return axios.get("/api/uploadRec");
   },
 
-  //gets recos according to search term and keywords
-  // getSearchedRecos: function (searchTerm) {
-  //   return axios.get("/api/uploadRec", { params: { searchTerm: "reco_keywords:" + searchTerm } });
-  // },
+  // gets all images uploaded 
+  getmyImg: function () {
+    return axios.get("/api/uploadImg")
+  },
 
   findKeywordRecos: function (searchTerm) {
     return axios.get("/api/uploadRec/" + searchTerm);

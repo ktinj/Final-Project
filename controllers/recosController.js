@@ -3,9 +3,7 @@ const db = require("../models");
 // Defining methods for the commentsController
 module.exports = {
   findAll: function (req, res) {
-    // console.log(req)
     db.Recos
-      // .find()
       .find({ username: req.user.username })
       .sort({ date: -1 })
       .then(dbModel => res.json(dbModel))

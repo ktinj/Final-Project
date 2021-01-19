@@ -4,6 +4,7 @@ const imageController = require("../../controllers/imgController");
 // Matches with "/api/comments"
 router.route("/")
 //   .get(recosController.findAll)
-  .post(imageController.create);
+  .post(imageController.create)
+  .get(imageController.findAll)
 
 module.exports = router;
