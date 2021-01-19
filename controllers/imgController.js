@@ -1,6 +1,15 @@
 const db = require("../models");
 
 module.exports = {
+
+    findAll: function(req, res) {
+      db.Image
+      .find()
+      .sort({ date: -1 })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+    },
+
     create: function (req, res) {
         if (req.files === null) {
             return res.status(400).json({ msg: 'No file uploaded' });
