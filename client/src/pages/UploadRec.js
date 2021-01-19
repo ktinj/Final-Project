@@ -24,7 +24,7 @@ function UploadRec({ username }) {
     //setting initial state of the form object
     const [formObject, setFormObject] = useState({
         reco_name: "Name",
-        // reco_pic: {},
+        // image: "",
         reco_link: "Link",
         reco_description: "Description",
         reco_keywords: "Keywords"
@@ -53,16 +53,98 @@ function UploadRec({ username }) {
 
     }, [username]);
 
+    //image data to base64 function
+    const arrayBufferToBase64 = (buffer) => {
+        var binary = '';
+        var bytes = [].slice.call(new Uint8Array(buffer));
+        bytes.forEach((b) => binary += String.fromCharCode(b));
+        return window.btoa(binary);
+    };
+
+    useEffect(() => {
+        if (recoState.recos.length > 0) {
+
+            API.getmyImg()
+            .then(res => { console.log("I am here", res); return res })
+            .then(data => {
+                // console.log("inside second one", recoState.recos)
+                var base64Flag = 'data:image/jpeg;base64,';
+                console.log(data)
+                console.log(recoState.recos.length)
+                for (let i = 0; i < data.data.length; i++) {
+                    
+                    var imageStr =
+                        arrayBufferToBase64(data.data[i].reco_pic.data.data);
+                    
+                    //make shallow copy of recos
+                    let recos = [...recoState.recos];
+                    recos[i].image = base64Flag + imageStr;
+                    setRecoState({...recoState, recos});
+    
+                    // //copy item want to mutate
+                    // let reco = { ...recos[i] };
+    
+                    // //replace preoprty interested in
+                    // reco.image = base64Flag + imageStr;
+                    // console.log(base64Flag + imageStr)
+    
+                    // //put back into array
+                    // recos[i] = reco;
+    
+                    // //set state to new copy
+                    // setRecoState({ ...recoState, recos });
+    
+                }})
+
+        }
+       
+
+    }, [recoState.recos.length])
+
     //load all reco uploads belong to the user who is signed in
     function loadMyRecos() {
         // console.log("load my recos");
         API.getMyRecos()
+            //d is the response from the database
             .then(d => { console.log(d); return d })
-            .then(res => setRecoState({ ...recoState, recos: res.data }))
+            .then(res => {
+                setRecoState({ ...recoState, recos: res.data });
+            })
             .catch(err => console.log(err));
-        //not returning image because image on /api/uploadImg
-        API.getmyImg()
-            .then(res => { console.log(res);  return res })
+            // .then(() => { API.getmyImg()
+            // .then(res => { console.log("I am here", res); return res })
+            // .then(data => {
+            //     console.log("inside second one", recoState.recos)
+            //     var base64Flag = 'data:image/jpeg;base64,';
+
+            //     for (let i = 0; i < recoState.recos.length; i++) {
+            //         var imageStr =
+            //             arrayBufferToBase64(data[i].reco_pic.data.data);
+
+            //         //make shallow copy of recos
+            //         let recos = [...recoState];
+
+            //         //copy item want to mutate
+            //         let reco = { ...recos[i] };
+
+            //         //replace preoprty interested in
+            //         reco.image = base64Flag + imageStr;
+
+            //         //put back into array
+            //         recos[i] = reco;
+
+            //         //set state to new copy
+            //         setRecoState({ ...recoState, recos });
+
+            //     }
+
+            // })
+    
+        
+        //transform data to base64, can then fetch it
+        //set a state here, so state has an image 
+
+
     }
 
     //Handle input change for form when user is uploading a reco
@@ -126,21 +208,21 @@ function UploadRec({ username }) {
                                 Math.round((progressEvent.loaded * 100) / progressEvent.total)
                             )
                         );
-    
+
                         // Clear percentage
                         setTimeout(() => setUploadPercentage(0), 10000);
                     }
                 })
             })
-            .then(loadMyRecos)
-            .then(() => setFormObject({
-                reco_name: "",
-                reco_pic: "",
-                reco_link: "",
-                reco_description: "",
-                reco_keywords: "",
-                username: ""
-            }))
+                .then(loadMyRecos)
+                .then(() => setFormObject({
+                    reco_name: "",
+                    reco_pic: "",
+                    reco_link: "",
+                    reco_description: "",
+                    reco_keywords: "",
+                    username: ""
+                }))
 
         } catch (err) {
             if (err.response.status === 500) {
@@ -149,28 +231,29 @@ function UploadRec({ username }) {
                 setMessage(err.response.data.msg);
             }
         }
-     
+
     };
 
-    return <>
-        <Container>
-            <Row>
-                <Col size='md-12'>
+    return (
+        <>
+            <Container>
+                <Row>
+                    <Col size='md-12'>
 
 
-                    <Card title="Upload a Recommendation">
-                        <form>
-                            <div className="form-group">
-                                <Input value={formObject.reco_name} onChange={handleInputChange} name='reco_name' placeholder='Title' />
-                                <Input className='form-control' value={formObject.reco_description} onChange={handleInputChange} name='reco_description' placeholder='description' />
-                                {/* <Input className='form-control' value={formObject.reco_pic} onChange={handleInputChange} name='reco_pic' placeholder='pic' /> */}
-                                <Input className='form-control' value={formObject.reco_link} onChange={handleInputChange} name='reco_link' placeholder='link' />
-                                <Input className='form-control' value={formObject.reco_keywords} onChange={handleInputChange} name='reco_keywords' placeholder='keywords' />
+                        <Card title="Upload a Recommendation">
+                            <form>
+                                <div className="form-group">
+                                    <Input value={formObject.reco_name} onChange={handleInputChange} name='reco_name' placeholder='Title' />
+                                    <Input className='form-control' value={formObject.reco_description} onChange={handleInputChange} name='reco_description' placeholder='description' />
+                                    {/* <Input className='form-control' value={formObject.reco_pic} onChange={handleInputChange} name='reco_pic' placeholder='pic' /> */}
+                                    <Input className='form-control' value={formObject.reco_link} onChange={handleInputChange} name='reco_link' placeholder='link' />
+                                    <Input className='form-control' value={formObject.reco_keywords} onChange={handleInputChange} name='reco_keywords' placeholder='keywords' />
 
 
-                                <div className="file-upload">
-                                    {message ? <Message msg={message} /> : null}
-                                    {/* <form onSubmit={onSubmit}> */}
+                                    <div className="file-upload">
+                                        {message ? <Message msg={message} /> : null}
+                                        {/* <form onSubmit={onSubmit}> */}
                                         <div className='custom-file mb-4'>
                                             <Input
                                                 type='file'
@@ -192,69 +275,69 @@ function UploadRec({ username }) {
                                             value='Upload'
                                             className='btn btn-primary btn-block mt-4'
                                         /> */}
-                                    {/* </form> */}
-                                    {uploadedFile ? (
-                                        <div className='row mt-5'>
-                                            <div className='col-md-6 m-auto'>
-                                                <h3 className='text-center'>{uploadedFile.fileName}</h3>
-                                                <img style={{ width: '100%' }} src={uploadedFile.filePath} alt='' />
+                                        {/* </form> */}
+                                        {uploadedFile ? (
+                                            <div className='row mt-5'>
+                                                <div className='col-md-6 m-auto'>
+                                                    <h3 className='text-center'>{uploadedFile.fileName}</h3>
+                                                    <img style={{ width: '100%' }} src={uploadedFile.filePath} alt='' />
+                                                </div>
                                             </div>
-                                        </div>
-                                    ) : null}
+                                        ) : null}
 
 
+                                    </div>
+
+
+                                    {/* <FileUpload /> */}
                                 </div>
+                            </form>
+                        </Card>
 
-
-                                {/* <FileUpload /> */}
-                            </div>
-                        </form>
-                    </Card>
-
-                    <FormBtn
-                        disabled={!formObject.reco_name}
-                        // onClick={handleFormSubmit}>
-                        onClick={onSubmit}>
-                        Upload Recommendation
+                        <FormBtn
+                            disabled={!formObject.reco_name}
+                            // onClick={handleFormSubmit}>
+                            onClick={onSubmit}>
+                            Upload Recommendation
 				</FormBtn>
-                </Col>
+                    </Col>
 
-            </Row>
+                </Row>
 
-            <Row>
-                <Col size="md-12">
-                    <Card>
-                        {recoState.recos.length > 0 ? (
-                            <List>
-                                {recoState.recos.map(result => (
-                                    <DisplayRecos
-                                        key={result._id}
-                                        title={result.reco_name}
-                                        pic={result.reco_pic}
-                                        link={result.reco_link}
-                                        description={result.reco_description}
-                                        keywords={result.reco_keywords}
-                                        date={result.reco_date}
-                                        Button={() => (
-                                            <button
-                                                className="btn btn-dark ml-2"
-                                                onClick={() => this.handleRecoSave(result._id)}>Save Recommendation</button>
-                                        )}
+                <Row>
+                    <Col size="md-12">
+                        <Card>
+                            {recoState.recos.length > 0 ? (
+                                <List>
+                                    {recoState.recos.map(result => (
+                                        <DisplayRecos
+                                            key={result._id}
+                                            title={result.reco_name}
+                                            pic={result.image}
+                                            link={result.reco_link}
+                                            description={result.reco_description}
+                                            keywords={result.reco_keywords}
+                                            date={result.reco_date}
+                                            Button={() => (
+                                                <button
+                                                    className="btn btn-dark ml-2"
+                                                    onClick={() => this.handleRecoSave(result._id)}>Save Recommendation</button>
+                                            )}
 
-                                    />
-                                ))}
-                            </List>
-                        ) : (
-                                <h3 className="text-center">{recoState.prompt}</h3>
-                            )}
-                    </Card>
-                </Col>
-            </Row>
-        </Container>
-    </>
+                                        />
+                                    ))}
+                                </List>
+                            ) : (
+                                    <h3 className="text-center">{recoState.prompt}</h3>
+                                )}
+                        </Card>
+                    </Col>
+                </Row>
+            </Container>
+        </>
 
-    //req.user (access with passport)
-
+        //req.user (access with passport)
+    )
 }
 
 export default UploadRec;
