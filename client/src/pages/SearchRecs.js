@@ -29,33 +29,13 @@ class Search extends Component {
         this.getSearchedRecos();
     };
 
-    arrayBufferToBase64 = (buffer) => {
-        var binary = '';
-        var bytes = [].slice.call(new Uint8Array(buffer));
-        bytes.forEach((b) => binary += String.fromCharCode(b));
-        return window.btoa(binary);
-    };
-
     getSearchedRecos = () => {
         API.findKeywordRecos(this.state.searchTerm)
-            .then(recoData => {
-                const recos = [];
-                var base64Flag = 'data:image/jpeg;base64,';
-                recoData.data.forEach(reco => {
-                    const reco_pic_id = reco.reco_pic
-                    API.getmyImg(reco_pic_id)
-                    .then(picData => {
-                        var imageStr = this.arrayBufferToBase64(picData.data.reco_pic.data.data);
-                        reco.image = base64Flag + imageStr;
-                    })
-                    recos.push(reco)
+            .then(res =>
+                this.setState({
+                    recoResults: res.data
                 })
-                return recos
-            })
-            .then(finalRecoData => {
-                console.log(finalRecoData)
-                this.setState({...this.state, recoResults: finalRecoData});
-            })
+            )
             .catch(() =>
                 this.setState({
                     recoResults: [],
@@ -103,7 +83,7 @@ class Search extends Component {
                                         <DisplayRecos
                                             key={result._id}
                                             title={result.reco_name}
-                                            pic={result.image}
+                                            pic={result.reco_pic}
                                             link={result.reco_link}
                                             description={result.reco_description}
                                             keywords={result.reco_keywords}

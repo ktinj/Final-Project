@@ -57,104 +57,37 @@ function UploadRec({ username }) {
         return window.btoa(binary);
     };
 
-    // useEffect(() => {
-    //     if (recoState.recos.length > 0) {
-
-    //         API.getmyImg()
-    //         .then(res => { console.log("I am here", res); return res })
-    //         .then(data => {
-    //             // console.log("inside second one", recoState.recos)
-    //             var base64Flag = 'data:image/jpeg;base64,';
-    //             console.log(data)
-    //             console.log(recoState.recos.length)
-    //             for (let i = 0; i < data.data.length; i++) {
-                    
-    //                 var imageStr =
-    //                     arrayBufferToBase64(data.data[i].reco_pic.data.data);
-                    
-    //                 //make shallow copy of recos
-    //                 let recos = [...recoState.recos];
-    //                 recos[i].image = base64Flag + imageStr;
-    //                 setRecoState({...recoState, recos});
-    
-    //                 // //copy item want to mutate
-    //                 // let reco = { ...recos[i] };
-    
-    //                 // //replace preoprty interested in
-    //                 // reco.image = base64Flag + imageStr;
-    //                 // console.log(base64Flag + imageStr)
-    
-    //                 // //put back into array
-    //                 // recos[i] = reco;
-    
-    //                 // //set state to new copy
-    //                 // setRecoState({ ...recoState, recos });
-    
-    //             }})
-
-    //     }
+    useEffect(() => {
+        if (recoState.recos.length > 0) {
+            var base64Flag = 'data:image/jpeg;base64,';
+            let recosArr = [...recoState.recos];
+            recosArr.forEach(reco => {
+                API.getmyImg(reco.reco_pic)
+                .then(picData => {
+                    var imageStr =
+                        arrayBufferToBase64(picData.data.reco_pic.data.data);
+                    console.log()
+                    if(!picData.data._id === reco.reco_pic) {
+                        return;
+                    }
+                    reco.image = base64Flag + imageStr;
+                    setRecoState({...recoState, recosArr});
+                })
+            })
+            
+        }
        
 
-    // }, [recoState.recos.length])
+    }, [recoState.recos.length])
 
     //load all reco uploads belong to the user who is signed in
     function loadMyRecos() {
-        // console.log("load my recos");
+
         API.getMyRecos()
-        .then(recoData => {
-            const recosArr = recoData.data;
-            recosArr.forEach(reco => {
-                const reco_pic_id = reco.reco_pic;
-                API.getmyImg(reco_pic_id)
-                .then(picData => {
-                    var base64Flag = 'data:image/jpeg;base64,';
-                    var imageStr = arrayBufferToBase64(picData.data.reco_pic.data.data);
-                    reco.image = base64Flag + imageStr;
-                })
+            .then(recoData => {
+                setRecoState({ ...recoState, recos: recoData.data });
             })
-            setRecoState({...recoState, recos: recosArr});
-        })
-        .catch(err => console.log(err));
-        // API.getMyRecos()
-        //     //d is the response from the database
-        //     .then(d => { console.log(d); return d })
-        //     .then(res => {
-        //         setRecoState({ ...recoState, recos: res.data });
-        //     })
-            
-            // .then(() => { API.getmyImg()
-            // .then(res => { console.log("I am here", res); return res })
-            // .then(data => {
-            //     console.log("inside second one", recoState.recos)
-            //     var base64Flag = 'data:image/jpeg;base64,';
-
-            //     for (let i = 0; i < recoState.recos.length; i++) {
-            //         var imageStr =
-            //             arrayBufferToBase64(data[i].reco_pic.data.data);
-
-            //         //make shallow copy of recos
-            //         let recos = [...recoState];
-
-            //         //copy item want to mutate
-            //         let reco = { ...recos[i] };
-
-            //         //replace preoprty interested in
-            //         reco.image = base64Flag + imageStr;
-
-            //         //put back into array
-            //         recos[i] = reco;
-
-            //         //set state to new copy
-            //         setRecoState({ ...recoState, recos });
-
-            //     }
-
-            // })
-    
-        
-        //transform data to base64, can then fetch it
-        //set a state here, so state has an image 
-
+            .catch(err => console.log(err));
 
     }
 
@@ -163,31 +96,6 @@ function UploadRec({ username }) {
         const { name, value } = event.target;
         setFormObject({ ...formObject, [name]: value });
     }
-
-    // When form submitted, use API.saveReco method to save reco data
-    // function handleFormSubmit(event) {
-    //     event.preventDefault();
-    //     // if (formObject.body) {
-    //     API.uploadReco({
-    //         reco_name: formObject.reco_name,
-    //         reco_pic: formObject.reco_pic,
-    //         reco_link: formObject.reco_link,
-    //         reco_description: formObject.reco_description,
-    //         reco_keywords: formObject.reco_keywords,
-    //         username: formObject.username
-    //     })
-    //         .then(loadMyRecos)
-    //         .then(() => setFormObject({
-    //             reco_name: "",
-    //             reco_pic: "",
-    //             reco_link: "",
-    //             reco_description: "",
-    //             reco_keywords: "",
-    //             username: ""
-    //         }))
-    //         .catch(err => console.log(err));
-    //     // }
-    // }
 
     //on change for the image upload
     const onChange = e => {
@@ -201,7 +109,6 @@ function UploadRec({ username }) {
         const formData = new FormData();
         formData.append('file', file);
 
-        try {
             API.uploadReco({
                 reco_name: formObject.reco_name,
                 reco_link: formObject.reco_link,
@@ -225,23 +132,17 @@ function UploadRec({ username }) {
                     }
                 })
             })
-                .then(loadMyRecos)
-                .then(() => setFormObject({
-                    reco_name: "",
-                    reco_pic: "",
-                    reco_link: "",
-                    reco_description: "",
-                    reco_keywords: "",
-                    username: ""
-                }))
-
-        } catch (err) {
-            if (err.response.status === 500) {
-                setMessage('There was a problem with the server');
-            } else {
-                setMessage(err.response.data.msg);
-            }
-        }
+            .then(() => loadMyRecos())
+            .then(() => setFormObject({
+                reco_name: "",
+                reco_pic: "",
+                reco_link: "",
+                reco_description: "",
+                reco_keywords: "",
+                username: ""
+            }))
+            .catch(err => console.log(err));
+            
 
     };
 
@@ -309,7 +210,6 @@ function UploadRec({ username }) {
                         <Card>
                             {recoState.recos.length > 0 ? (
                                 <List>
-                                    {console.log(recoState.recos)}
                                     {recoState.recos.map(result => (
                                         <DisplayRecos
                                             key={result._id}
