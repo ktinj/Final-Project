@@ -8,10 +8,6 @@ form {
   /* padding: 10px !important; */
 }
 
-form:focus {
-  background-color: blue !important;
-  }
-
 Input {
   border: 1px solid black !important;
   outline: 0;

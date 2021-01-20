@@ -19,5 +19,26 @@ li {
 
 .nav-right {
     float: right;
+}
+
+.closeButton {
+    border: 0 !important;
+    font-size: 10px !important;
+    color: #000000 !important;
+    font-family: 'Montserrat', sans-serif;
     
+}
+
+  /* close button */
+.close {
+    color: #d4d4dc;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover,
+.close:focus {
+    color: #feda6a;
+    text-decoration: none;
+    cursor: pointer;
 }
