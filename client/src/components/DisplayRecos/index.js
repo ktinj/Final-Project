@@ -3,7 +3,7 @@ import { ListItem } from "../List";
 import { Row, Col } from "../Grid";
 import "./style.css";
 
-function DisplayBook({ title, pic, link, description, keywords, date, Button }) {
+function DisplaySavedRecos({ title, pic, link, description, keywords, date, Button }) {
     return (
         <ListItem >
             <Row className="flex-wrap-reverse">
@@ -38,4 +38,4 @@ function DisplayBook({ title, pic, link, description, keywords, date, Button }) 
     )
 }
 
-export default DisplayBook;
+export default DisplaySavedRecos;

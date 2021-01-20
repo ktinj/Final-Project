@@ -1,15 +1,11 @@
-import React, { useState, useEffect, useRef } from "react";
-// import DeleteBtn from "../components/DeleteBtn";
+import React, { useState, useEffect } from "react";
 import API from "../utils/API";
-// import { Link } from "react-router-dom";
 import Card from "../components/Card";
 import { Input } from "../components/Form";
 import { Container, Col, Row } from "../components/Grid";
-// import { Table, Tr, Td } from "../components/Table";
-import { ForwardRefInput, FormBtn } from "../components/Form";
+import { FormBtn } from "../components/Form";
 import { List } from "../components/List";
 import DisplayRecos from "../components/DisplayRecos";
-// import FileUpload from '../components/FileUpload';
 import Message from "../components/Message";
 import Progress from "../components/Progress";
 import axios from 'axios';
@@ -253,7 +249,6 @@ function UploadRec({ username }) {
 
                                     <div className="file-upload">
                                         {message ? <Message msg={message} /> : null}
-                                        {/* <form onSubmit={onSubmit}> */}
                                         <div className='custom-file mb-4'>
                                             <Input
                                                 type='file'
@@ -270,12 +265,6 @@ function UploadRec({ username }) {
 
                                         <Progress percentage={uploadPercentage} />
 
-                                        {/* <input
-                                            type='submit'
-                                            value='Upload'
-                                            className='btn btn-primary btn-block mt-4'
-                                        /> */}
-                                        {/* </form> */}
                                         {uploadedFile ? (
                                             <div className='row mt-5'>
                                                 <div className='col-md-6 m-auto'>
@@ -287,16 +276,12 @@ function UploadRec({ username }) {
 
 
                                     </div>
-
-
-                                    {/* <FileUpload /> */}
                                 </div>
                             </form>
                         </Card>
 
                         <FormBtn
                             disabled={!formObject.reco_name}
-                            // onClick={handleFormSubmit}>
                             onClick={onSubmit}>
                             Upload Recommendation
 				</FormBtn>
@@ -336,7 +321,6 @@ function UploadRec({ username }) {
             </Container>
         </>
 
-        //req.user (access with passport)
     )
 }
 
