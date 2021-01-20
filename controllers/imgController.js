@@ -9,7 +9,13 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
     },
-
+    findById: function(req, res) {
+      console.log(req)
+      db.Image
+      .findById({_id: req.params.id})
+      .then(imgData => res.json(imgData))
+      .catch(err => res.status(422).json(err));
+    },
     create: function (req, res) {
         if (req.files === null) {
             return res.status(400).json({ msg: 'No file uploaded' });
