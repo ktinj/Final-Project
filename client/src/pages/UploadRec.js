@@ -108,11 +108,9 @@ function UploadRec({ username }) {
                 const reco_pic_id = reco.reco_pic
                 API.getmyImg(reco_pic_id)
                 .then(picData => {
-                    var imageStr = 
-                    arrayBufferToBase64(picData.data.reco_pic.data.data);
-                    var src = base64Flag + imageStr
-                    reco.image = src
-                    console.log(reco.image)
+                    var imageStr = arrayBufferToBase64(picData.data.reco_pic.data.data);
+                    reco.image = base64Flag + imageStr
+                    
                 })
                 recos.push(reco)
             })
