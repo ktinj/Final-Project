@@ -1,12 +1,12 @@
 import React from "react";
-import "./card.scss";
+import "./style.css";
 
 
 function Card({ title, children }) {
   return (
-    <div className="card text-center m-3">
+    <div className="card text-center">
       
-        <strong>{title} </strong>
+        {title}
       
       <div className="card-body ">{children}</div>
     </div>

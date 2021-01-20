@@ -1,5 +1,5 @@
 import React from "react";
-import "./form.scss";
+import "./form.css";
 
 // This file exports the Input, TextArea, and FormBtn components
 
@@ -39,15 +39,16 @@ export function FormBtn(props) {
 
 export function Form({ searchTerm, handleInputChange, handleFormSubmit }) {
 	return (
+		
 		<form>
-			<p>What are you looking for?</p>
+			<p1>welcome to perch</p1>
 			<div className="search-bar">
 				<input className="form-control"
 					id="search-title"
 					type="text"
 					value={searchTerm}
 					name="searchTerm"
-					placeholder=""
+					placeholder=" What are you looking for?"
 					onChange={handleInputChange}
 					required
 				/>
@@ -58,7 +59,7 @@ export function Form({ searchTerm, handleInputChange, handleFormSubmit }) {
 					className="button"
 					onClick={handleFormSubmit}
 					type="submit">
-					Search
+					Get Recommendations
                 </button>
 			{/* </div> */}
 		</form>

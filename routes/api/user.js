@@ -12,7 +12,7 @@ router.route("/login")
 
 // Matches with "/api/user/signup"
 router.route("/signup")
-   .post( userController.signup );
+	.post( userController.signup );
 
 // Matches with "/api/user/logout"
 router.route("/logout")
@@ -22,6 +22,6 @@ router.route("/logout")
 // Matches with "/api/user/authenticate"
 router.route("/authenticate")
 	// Route for getting some data about our user to be used client side
-   .post( userController.authenticate);
- 
+	.post( userController.authenticate);
+
 module.exports = router;

@@ -7,10 +7,10 @@ import { Input, FormBtn } from "../components/Form";
 
 class Signup extends Component {
   state = {
-    email: "1@1",
-    username: "one",
-    password: "1",
-    passwordConf: "1"
+    email: "",
+    username: "",
+    password: "",
+    passwordConf: ""
   };
 
   componentDidMount() {
@@ -49,25 +49,29 @@ class Signup extends Component {
         <Row>
           <Col size="12">
             <form>
+              <p>username</p>
               <Input
                 value={this.state.username}
                 onChange={this.handleInputChange}
                 name="username"
-                placeholder="username"
+                placeholder="what's your name"
               />
+              <p>email</p>
               <Input
                 value={this.state.email}
                 onChange={this.handleInputChange}
                 name="email"
-                placeholder="email"
+                placeholder="enter a valid email"
               />
+              <p>password</p>
               <Input
                 value={this.state.password}
                 onChange={this.handleInputChange}
                 name="password"
-                placeholder="password"
+                placeholder="choose a secure password"
                 type="password"
               />
+              <p>confirm password</p>
               <Input
                 value={this.state.passwordConf}
                 onChange={this.handleInputChange}
@@ -80,10 +84,10 @@ class Signup extends Component {
                 // disabled={!(this.state.email && this.state.password)}
                 onClick={this.handleFormSubmit}
               >
-                Signup
+                <p>Signup</p>
               </FormBtn>
               <Link to="/">
-              <FormBtn> Login </FormBtn>
+              <FormBtn> <p>Login</p> </FormBtn>
             </Link>
             </form>
           </Col>

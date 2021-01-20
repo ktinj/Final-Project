@@ -9,6 +9,7 @@ import { Table, Tr, Td } from "../components/Table";
 import { ForwardRefInput, FormBtn } from "../components/Form";
 import { List } from "../components/List";
 import DisplayRecos from "../components/DisplayRecos";
+import FileUpload from '../components/FileUpload';
 
 function UploadRec({ username }) {
 
@@ -33,7 +34,8 @@ function UploadRec({ username }) {
             reco_pic: "",
             reco_link: "",
             reco_description: "",
-            reco_keywords: ""
+            reco_keywords: "",
+            username: "",
         })
 
         loadMyRecos();
@@ -41,10 +43,12 @@ function UploadRec({ username }) {
     }, [username]);
 
     function loadMyRecos() {
+        console.log("load my recos");
         API.getMyRecos()
-            .then(d => console.log(d))
+            // .then(res => setRecoState({ ...recoState, recos: res }))
             .then(res => setRecoState({ ...recoState, recos: res.data }))
-            .catch(err => console.log(err));
+            .then(console.log(recoState.recos))
+            .catch (err => console.log(err));
     }
 
     //Handle updating component state when user types into the input field
@@ -62,7 +66,8 @@ function UploadRec({ username }) {
             reco_pic: formObject.reco_pic,
             reco_link: formObject.reco_link,
             reco_description: formObject.reco_description,
-            reco_keywords: formObject.reco_keywords
+            reco_keywords: formObject.reco_keywords,
+            username: formObject.username
         })
             .then(loadMyRecos)
             .then(() => setFormObject({
@@ -70,35 +75,34 @@ function UploadRec({ username }) {
                 reco_pic: "",
                 reco_link: "",
                 reco_description: "",
-                reco_keywords: ""
+                reco_keywords: "",
+                username: ""
             }))
             .catch(err => console.log(err));
     }
 
 
     return <>
-        <Container>
+        <Container fluid>
             <Row>
                 <Col size='md-12'>
-
-
-                    <Card title="Upload a Recommendation">
+                    <Card title="Give a recommendation">
                         <form>
                             <div className="form-group">
-                                <Input value={formObject.reco_name} onChange={handleInputChange} name='reco_name' placeholder='Title' />
+                                <Input value={formObject.reco_name} onChange={handleInputChange} name='reco_name' placeholder='title' />
                                 <Input className='form-control' value={formObject.reco_description} onChange={handleInputChange} name='reco_description' placeholder='description' />
                                 <Input className='form-control' value={formObject.reco_pic} onChange={handleInputChange} name='reco_pic' placeholder='pic' />
                                 <Input className='form-control' value={formObject.reco_link} onChange={handleInputChange} name='reco_link' placeholder='link' />
                                 <Input className='form-control' value={formObject.reco_keywords} onChange={handleInputChange} name='reco_keywords' placeholder='keywords' />
+                                <FileUpload/>
                             </div>
                         </form>
                     </Card>
-
                     <FormBtn
                         disabled={!formObject.reco_name}
                         onClick={handleFormSubmit}>
                         Upload Recommendation
-					    </FormBtn>
+					</FormBtn>
                 </Col>
 
             </Row>
@@ -119,7 +123,7 @@ function UploadRec({ username }) {
                                         date={result.reco_date}
                                         Button={() => (
                                             <button
-                                                className="btn btn-dark ml-2"
+                                                className="btn"
                                                 onClick={() => this.handleRecoSave(result._id)}>Save Recommendation</button>
                                         )}
 
@@ -133,6 +137,7 @@ function UploadRec({ username }) {
                 </Col>
             </Row>
         </Container>
+        
     </>
 
 
