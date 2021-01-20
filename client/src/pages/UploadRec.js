@@ -20,7 +20,7 @@ function UploadRec({ username }) {
     //setting initial state of the form object
     const [formObject, setFormObject] = useState({
         reco_name: "Name",
-        // reco_pic: "",
+        // image: "",
         reco_link: "Link",
         reco_description: "Description",
         reco_keywords: "Keywords"
@@ -37,7 +37,7 @@ function UploadRec({ username }) {
         //set user after successful component mount
         setFormObject({
             reco_name: "title",
-            // reco_pic: "",
+            // image: "",
             reco_link: "link",
             reco_description: "description",
             reco_keywords: "keywords",
@@ -102,23 +102,17 @@ function UploadRec({ username }) {
         // console.log("load my recos");
         API.getMyRecos()
         .then(recoData => {
-            const recos = [];
-            var base64Flag = 'data:image/jpeg;base64,';
-            recoData.data.forEach(reco => {
-                const reco_pic_id = reco.reco_pic
+            const recosArr = recoData.data;
+            recosArr.forEach(reco => {
+                const reco_pic_id = reco.reco_pic;
                 API.getmyImg(reco_pic_id)
                 .then(picData => {
+                    var base64Flag = 'data:image/jpeg;base64,';
                     var imageStr = arrayBufferToBase64(picData.data.reco_pic.data.data);
-                    reco.image = base64Flag + imageStr
-                    
+                    reco.image = base64Flag + imageStr;
                 })
-                recos.push(reco)
             })
-            return recos
-        })
-        .then(finalRecoData => {
-            console.log(finalRecoData)
-            setRecoState({...recoState, recos: finalRecoData});
+            setRecoState({...recoState, recos: recosArr});
         })
         .catch(err => console.log(err));
         // API.getMyRecos()
@@ -315,6 +309,7 @@ function UploadRec({ username }) {
                         <Card>
                             {recoState.recos.length > 0 ? (
                                 <List>
+                                    {console.log(recoState.recos)}
                                     {recoState.recos.map(result => (
                                         <DisplayRecos
                                             key={result._id}

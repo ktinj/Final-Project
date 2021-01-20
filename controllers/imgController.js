@@ -10,7 +10,6 @@ module.exports = {
       .catch(err => res.status(422).json(err));
     },
     findById: function(req, res) {
-      console.log(req)
       db.Image
       .findById({_id: req.params.id})
       .then(imgData => res.json(imgData))
