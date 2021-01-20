@@ -1,0 +1,44 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 40px;
+    color: black;
+}
+
+.li-logo {
+    padding-left: 10px;
+    vertical-align: top;
+    font-size: 30px;
+    font-weight: lighter;
+}
+li {
+    display: inline;
+    padding-left: 30px;
+    color: #000000; 
+}
+
+.nav-right {
+    float: right;
+}
+
+.closeButton {
+    border: 0 !important;
+    font-size: 10px !important;
+    color: #000000 !important;
+    font-family: 'Montserrat', sans-serif;
+    
+}
+
+  /* close button */
+.close {
+    color: #d4d4dc;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover,
+.close:focus {
+    color: #feda6a;
+    text-decoration: none;
+    cursor: pointer;
+}

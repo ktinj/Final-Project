@@ -6,23 +6,23 @@ import "./style.css";
 function DisplaySavedRecos({ title, pic, link, description, keywords, date, Button }) {
     return (
         <ListItem >
-            <Row className="flex-wrap-reverse">
+            <Row className="flex-wrap-reverse" border="0">
                 <Col size="md-12">
-                    <h2 className="font-italic">{title}</h2>
+                    <h2>{title}</h2>
                 </Col>
                 <Col size="md-12">
-                    <div className="btn-container">
-                        <a className="btn btn-light" target="_blank" rel="noopener noreferror" href={link}>
+                    {/* <div className="btn-container">
+                        <a className="btn" target="_blank" rel="noopener noreferror" href={link}>
                             See Recommendation
                         </a>
                         <Button />
-                    </div>
+                    </div> */}
                 </Col>
             </Row>
             <Row>
                 <Col size="md-6">
-                    <p className="font-italic text-dark">Created On: {date} </p><br></br>
-                    <p className="font-italic text-dark">Keywords: {keywords} </p>
+                    <p>Created On: {date} </p><br></br>
+                    <p>Keywords: {keywords} </p>
                 </Col>
             </Row>
             <Row>

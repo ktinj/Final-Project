@@ -1,0 +1,21 @@
+.card-body {
+    background-color: white;
+    border: 0;
+    align-items: center;
+    position: relative;
+    /* top: 50%; */
+    width: 100%;
+    text-align: center;
+}
+
+.card {
+    background-color: #f1ece2;
+    text-align: center;
+    text-transform: lowercase;
+    border: 0;
+    /* align-items: center; */
+}
+
+.title {
+    text-transform: lowercase;
+}

@@ -1,0 +1,9 @@
+.btn {
+    border-radius: 20px!important;
+    border: 1px solid black !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    width: auto !important;
+    font-size: 5px;
+    font-family: 'Montserrat', sans-serif;
+}

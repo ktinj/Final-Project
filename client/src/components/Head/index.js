@@ -1,14 +1,16 @@
 import React from "react";
 import useLogRender from "../../utils/useLogPath";
+import logo from "./PERCH-(3).gif";
+import "./style.css";
 
-function Nav() {
+
+function Head() {
 	useLogRender();
 
 	return (
-		<nav>
-			<h1 className='mt-0 ml-0 mb-3 text-dark p-4 pt-3 pl-3'>Express Sequelize box</h1>
-		</nav>
+		<img src={logo} class="center" alt="Perch Logo"/>
+		
 	);
 }
 
-export default Nav;
+export default Head;

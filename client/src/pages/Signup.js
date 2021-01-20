@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import Footer from "../components/Footer";
 import userAPI from "../utils/userAPI";
 import {  Redirect, Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
@@ -7,10 +7,10 @@ import { Input, FormBtn } from "../components/Form";
 
 class Signup extends Component {
   state = {
-    email: "1@1",
-    username: "one",
-    password: "1",
-    passwordConf: "1"
+    email: "",
+    username: "",
+    password: "",
+    passwordConf: ""
   };
 
   componentDidMount() {
@@ -48,32 +48,35 @@ class Signup extends Component {
       <Container fluid>
         <Row>
           <Col size="12">
- 
             <form>
+              <p>username</p>
               <Input
                 value={this.state.username}
                 onChange={this.handleInputChange}
                 name="username"
-                placeholder="username (required)"
+                placeholder="what's your name"
               />
+              <p>email</p>
               <Input
                 value={this.state.email}
                 onChange={this.handleInputChange}
                 name="email"
-                placeholder="email (required)"
+                placeholder="enter a valid email"
               />
+              <p>password</p>
               <Input
                 value={this.state.password}
                 onChange={this.handleInputChange}
                 name="password"
-                placeholder="(required)"
+                placeholder="choose a secure password"
                 type="password"
               />
+              <p>confirm password</p>
               <Input
                 value={this.state.passwordConf}
                 onChange={this.handleInputChange}
                 name="passwordConf"
-                placeholder="(required)"
+                placeholder="confirm password"
                 type="password"
               />
               
@@ -81,19 +84,18 @@ class Signup extends Component {
                 // disabled={!(this.state.email && this.state.password)}
                 onClick={this.handleFormSubmit}
               >
-                signup
+                <p>Signup</p>
               </FormBtn>
               <Link to="/">
-               <FormBtn> Login </FormBtn>
-             </Link>
+              <FormBtn> <p>Login</p> </FormBtn>
+            </Link>
             </form>
           </Col>
           
         </Row>
         {/* redirect on authenticated */}
         {this.props.authenticated ? <Redirect to='/comments'/>: <div></div>}
-
-
+<Footer />
       </Container>
     );
   }
