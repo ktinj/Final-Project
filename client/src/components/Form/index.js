@@ -10,21 +10,6 @@ export function Input(props) {
 	);
 }
 
-// forwarding ref (alternatively you can also prop drill it): https://reactjs.org/docs/forwarding-refs.html)
-export const ForwardRefInput = React.forwardRef((props, ref) => (
-	<div className='form-group'>
-		<input className='form-control' ref={ref} {...props} />
-	</div>
-));
-
-export function TextArea(props) {
-	return (
-		<div className='form-group'>
-			<input className='form-control' {...props} />
-		</div>
-	);
-}
-
 export function FormBtn(props) {
 	return (
 		<button

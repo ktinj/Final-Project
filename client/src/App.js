@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
-import Comments from "./pages/Comments";
-import Home from "./pages/Home";
 import { Container } from "./components/Grid";
-import Comment from "./pages/Comment";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import NoMatch from "./pages/NoMatch";
@@ -59,29 +56,19 @@ function App() {
 							/>
 						)}
 					/>
-               {/* <ProtectedRoute exact path={["/", "/comments"]}>
-                  <Comments {...userState} />
-               </ProtectedRoute> */}
-			   <ProtectedRoute exact path={["/", "/home"]}>
-                  <Home {...userState} />
-               </ProtectedRoute>
 			   <ProtectedRoute exact path="/uploadRec">
                   <UploadRec {...userState} />
                </ProtectedRoute>
-			   <ProtectedRoute exact path="/searchRec">
+			   <ProtectedRoute exact path={["/", "/searchRec"]}>
                   <SearchRecs {...userState} />
                </ProtectedRoute>
 			   <ProtectedRoute exact path="/savedRecs">
                   <SavedRecs {...userState} />
                </ProtectedRoute>
-               <ProtectedRoute exact path='/comments/:id' >
-                  <Comment {...userState} />
-               </ProtectedRoute>
 					<Route component={NoMatch} />
 				</Switch>
 			</Container>
 			{ userState.email ? <Redirect to="/searchRec" /> : <></>}
-         {/* { userState.email ? <Redirect to="/comments" /> : <></>} */}
 		</Router>
 	);
 }
