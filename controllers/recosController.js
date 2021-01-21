@@ -27,7 +27,7 @@ module.exports = {
     if (!req.user) return res.status(401).end('user isnt authenticated')
     
     db.Recos
-      .create({ username: req.body.username, reco_name: req.body.reco_name, reco_pic: req.body.reco_pic, reco_link: req.body.reco_link, reco_discription: req.body.reco_discription, reco_keywords: req.body.reco_keywords })
+      .create({ username: req.body.username, reco_name: req.body.reco_name, reco_pic: req.body.reco_pic, reco_link: req.body.reco_link, reco_description: req.body.reco_description, reco_keywords: req.body.reco_keywords })
       .then(({ _id }) => db.User.findOneAndUpdate({ _id: req.user._id }, { $push: { recos: _id } }, { new: true }))
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
