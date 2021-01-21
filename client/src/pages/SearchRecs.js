@@ -6,13 +6,13 @@ import { Form } from "../components/Form";
 import DisplayRecos from "../components/DisplayRecos";
 import { Container, Row, Col } from "../components/Grid";
 import { Link } from "react-router-dom";
-
+import Footer from "../components/Footer"
 
 class Search extends Component {
     state = {
         recoResults: [],
         searchTerm: "",
-        prompt: "Search For a Product Recommendation"
+        prompt: ""
     };
 
     arrayBufferToBase64 = buffer => {
@@ -22,9 +22,9 @@ class Search extends Component {
         return window.btoa(binary);
     };
 
-    componentDidUpdate = () => {
-        return this.getImg(this.state.recoResults);
-    }
+    // componentDidMount = () => {
+    //     return this.getImg(this.state.recoResults);
+    // }
 
     getImg = (recos) => {
         var base64Flag = 'data:image/jpeg;base64,';
@@ -61,7 +61,7 @@ class Search extends Component {
             .then(res =>
                 this.setState({
                     recoResults: res.data
-                })
+                },() => { this.getImg(this.state.recoResults); })
             )
             .catch(() =>
                 this.setState({
@@ -79,10 +79,10 @@ class Search extends Component {
 
     render() {
         return (
-            <Container>
+            <Container fluid>
                 <Row>
                     <Col size="md-12">
-                        <Card title="Search For a Book">
+                        <Card>
                             <Form
                                 handleInputChange={this.handleInputChange}
                                 handleFormSubmit={this.handleFormSubmit}
@@ -92,18 +92,8 @@ class Search extends Component {
                     </Col>
                 </Row>
                 <Row>
-                    <p>Upload your own:
-                        <button><Link to={"/uploadRec"}>Upload</Link></button>
-                    </p>
-                </Row>
-                <Row>
-                    <p>Or view your saved recommendations:
-                        <button><Link to={"/savedRecs"}>Saved</Link></button>
-                    </p>
-                </Row>
-                <Row>
                     <Col size='md-12'>
-                        <Card title="Search Results">
+                        <Card>
                             {this.state.recoResults.length > 0 ? (
                                 <List>
                                     {this.state.recoResults.map(result => (
@@ -117,10 +107,9 @@ class Search extends Component {
                                             date={result.reco_date}
                                             Button={() => (
                                                 <button
-                                                    className="btn btn-dark ml-2"
-                                                    onClick={() => this.handleRecoSave(result._id)}>Save Recommendation</button>
+                                                    className="button"
+                                                    onClick={() => this.handleRecoSave(result._id)}><a>Save &#9829;</a></button>
                                             )}
-
                                         />
                                     ))}
                                 </List>
@@ -129,10 +118,19 @@ class Search extends Component {
                                 )}
                                 
                         </Card>
-
-
                     </Col>
                 </Row>
+                <Row>
+                    <p class="center">
+                        <button><Link to={"/uploadRec"}>Make A Recommendation </Link></button>
+                    </p><br></br><br></br>
+                {/* </Row>
+                <Row> */}
+                    <p class="center">
+                        <button><Link to={"/savedRecs"}>Saved Recommendations</Link></button>
+                    </p>
+                </Row>
+                <Footer />
             </Container>
         )
     }

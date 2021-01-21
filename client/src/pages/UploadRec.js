@@ -75,7 +75,6 @@ function UploadRec({ username }) {
             })
             
         }
-       
 
     }, [recoState.recos.length])
 
@@ -150,9 +149,8 @@ function UploadRec({ username }) {
             <Container>
                 <Row>
                     <Col size='md-12'>
-
-
-                        <Card title="Upload a Recommendation">
+                        <p1>Make a recommendation</p1>
+                        <Card>
                             <form>
                                 <div className="form-group">
                                     <Input value={formObject.reco_name} onChange={handleInputChange} name='reco_name' placeholder='Title' />
@@ -198,7 +196,7 @@ function UploadRec({ username }) {
                         <FormBtn
                             disabled={!formObject.reco_name}
                             onClick={onSubmit}>
-                            Upload Recommendation
+                            <p>Upload Recommendation</p>
 				</FormBtn>
                     </Col>
 
@@ -220,8 +218,8 @@ function UploadRec({ username }) {
                                             date={result.date}
                                             Button={() => (
                                                 <button
-                                                    className="btn btn-dark ml-2"
-                                                    onClick={() => this.handleRecoSave(result._id)}>Save Recommendation</button>
+                                                    className="button"
+                                                    onClick={() => this.handleRecoSave(result._id)}><a>Save &#9829;</a></button>
                                             )}
 
                                         />
