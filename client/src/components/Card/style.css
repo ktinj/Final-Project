@@ -1,0 +1,29 @@
+.card-body {
+    background-color: white;
+    border: 0;
+    align-items: center;
+    position: relative;
+    /* top: 50%; */
+    width: 100%;
+    text-align: center;
+}
+
+.card {
+    background-color: #f1ece2;
+    text-align: center;
+    text-transform: lowercase;
+    border: 0 !important;
+    padding-bottom: 20px;
+    /* align-items: center; */
+}
+
+.title {
+    color: black;
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 45px;
+    text-transform: none;
+    font-weight: lighter;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+}

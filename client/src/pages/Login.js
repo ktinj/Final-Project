@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-
 import userAPI from "../utils/userAPI";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
-import { Input, FormBtn } from "../components/Form";
+import { Input, FormBtn, form} from "../components/Form";
+import Footer from "../components/Footer";
+import Head from "../components/Head";
 
 class Login extends Component {
   state = {
@@ -12,7 +13,6 @@ class Login extends Component {
     };
     
   componentDidMount() {
- 
   }
   
   handleInputChange = event => {
@@ -31,7 +31,7 @@ class Login extends Component {
       })
         .then(res => {
           if(res.status === 200 ){
-             this.props.setUserState(res.data)
+            this.props.setUserState(res.data)
           }
         })
         .catch(err => console.log(err));
@@ -41,20 +41,23 @@ class Login extends Component {
   render() {
     return (
       <Container fluid>
+        <Head />
         <Row>
-          <Col size="12">
+          <Col size="md-12">
             <form>
+              <p>email</p>
               <Input
                 value={this.state.email}
                 onChange={this.handleInputChange}
                 name="email"
-                placeholder="email (required)"
+                placeholder="enter valid email"
               />
+              <p>password</p>
               <Input
                 value={this.state.password}
                 onChange={this.handleInputChange}
                 name="password"
-                placeholder="(required)"
+                placeholder="enter your password"
                 type="password"
               />
               
@@ -62,14 +65,15 @@ class Login extends Component {
                 disabled={!(this.state.email && this.state.password)}
                 onClick={this.handleFormSubmit}
               >
-                Log in
+                <p>Login</p>
               </FormBtn>
-             <Link to="/signup">
-               <FormBtn> Signup </FormBtn>
-             </Link>
+            <Link to="/signup">
+              <FormBtn> <p>Signup</p> </FormBtn>
+            </Link>
             </form>
           </Col>
         </Row>
+        <Footer />
       </Container>
     );
   }

@@ -4,7 +4,7 @@ import { Container } from "./components/Grid";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import NoMatch from "./pages/NoMatch";
-import Head from "./components/Head";
+import Nav from "./components/Nav";
 import userAPI from "./utils/userAPI";
 import ProtectedRoute from "./components/ProtectedRoute"
 import UploadRec from "./pages/UploadRec";
@@ -14,10 +14,10 @@ import SavedRecs from "./pages/SavedRecs";
 function App() {
 	const [userState, setUserState] = useState({});
 
-   useEffect(() => { 
+useEffect(() => { 
 	   // auth user on first render
-      authenticate() 
-   }, []);
+    authenticate() 
+}, []);
 
 	//user authentication
 	function authenticate() {
@@ -31,7 +31,7 @@ function App() {
 
 	return (
 		<Router>
-			<Head />
+		    <Nav />
 			<Container>
 				<Switch>
 					<Route
@@ -56,20 +56,21 @@ function App() {
 							/>
 						)}
 					/>
-			   <ProtectedRoute exact path="/uploadRec">
-                  <UploadRec {...userState} />
-               </ProtectedRoute>
-			   <ProtectedRoute exact path={["/", "/searchRec"]}>
-                  <SearchRecs {...userState} />
-               </ProtectedRoute>
-			   <ProtectedRoute exact path="/savedRecs">
-                  <SavedRecs {...userState} />
-               </ProtectedRoute>
+			<ProtectedRoute exact path="/uploadRec">
+                <UploadRec {...userState} />
+            </ProtectedRoute>
+			<ProtectedRoute exact path={["/", "/searchRec"]}>
+                <SearchRecs {...userState} />
+            </ProtectedRoute>
+			<ProtectedRoute exact path="/savedRecs">
+                <SavedRecs {...userState} />
+        </ProtectedRoute>
 					<Route component={NoMatch} />
 				</Switch>
 			</Container>
 			{ userState.email ? <Redirect to="/searchRec" /> : <></>}
 		</Router>
+		
 	);
 }
 

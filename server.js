@@ -1,9 +1,9 @@
 const express = require("express");
+const fileUpload = require("express-fileupload");
 const mongoose = require("mongoose");
 const { mongoOptions, sessionOptions } = require("./utils/config");
 const routes = require("./routes");
 const app = express();
-const fileUpload = require("express-fileupload");
 const session = require("express-session");
 // Requiring passport as we've configured it
 const passport = require("./utils/passport");
@@ -30,6 +30,9 @@ app.use(passport.session());
 app.use(fileUpload());
 // Add routes, both API and view
 app.use(routes);
+
+//upload Endpoint
+//app.post('/api/upload', );
 
 // Connect to the Mongo DB
 mongoose.connect(process.env.ATLAS_URL || "mongodb://localhost/Perch", mongoOptions);
