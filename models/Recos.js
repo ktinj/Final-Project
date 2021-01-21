@@ -7,7 +7,7 @@ const recosSchema = new Schema({
 	reco_name: { type: String},
 	reco_pic: {type: mongoose.Types.ObjectId, ref: "Image"},
 	reco_link: { type:String, trim: true },
-	reco_descpription: { type: String, trim: true },
+	reco_description: { type: String, trim: true },
 	reco_keywords: { type: String, trim: true },
 	date: { type: Date, default: Date.now },
 });

@@ -13,8 +13,8 @@ export default {
   },
 
   // gets all images uploaded 
-  getmyImg: function () {
-    return axios.get("/api/uploadImg")
+  getmyImg: function (pic_id) {
+    return axios.get("/api/uploadImg/" + pic_id)
   },
 
   findKeywordRecos: function (searchTerm) {
