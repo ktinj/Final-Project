@@ -10,7 +10,6 @@ const passport = require("./utils/passport");
 const logger = require("morgan");
 
 const PORT = process.env.PORT || 3001;
-app.use(fileUpload());
 
 
 // logging (development)

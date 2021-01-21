@@ -62,6 +62,7 @@ function UploadRec({ username }) {
             var base64Flag = 'data:image/jpeg;base64,';
             let recosArr = [...recoState.recos];
             recosArr.forEach(reco => {
+                console.log({reco});
                 API.getmyImg(reco.reco_pic)
                 .then(picData => {
                     var imageStr =
