@@ -13,7 +13,35 @@ class Search extends Component {
         recoResults: [],
         searchTerm: "",
         prompt: "Search For a Product Recommendation"
+    };
+
+    arrayBufferToBase64 = buffer => {
+        var binary = '';
+        var bytes = [].slice.call(new Uint8Array(buffer));
+        bytes.forEach((b) => binary += String.fromCharCode(b));
+        return window.btoa(binary);
+    };
+
+    componentDidUpdate = () => {
+        return this.getImg(this.state.recoResults);
     }
+
+    getImg = (recos) => {
+        var base64Flag = 'data:image/jpeg;base64,';
+        let recosArr = recos;
+        recosArr.forEach(reco => {
+            API.getmyImg(reco.reco_pic)
+            .then(picData => {
+                var imageStr =
+                    this.arrayBufferToBase64(picData.data.reco_pic.data.data);
+                if(!picData.data._id === reco.reco_pic) {
+                    return;
+                }
+                reco.image = base64Flag + imageStr;
+                this.setState({[this.state.recoResults]: recosArr});
+            })
+        })
+    };
 
 
     handleInputChange = event => {
@@ -25,7 +53,6 @@ class Search extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        console.log("clicked");
         this.getSearchedRecos();
     };
 
@@ -83,7 +110,7 @@ class Search extends Component {
                                         <DisplayRecos
                                             key={result._id}
                                             title={result.reco_name}
-                                            pic={result.reco_pic}
+                                            pic={result.image}
                                             link={result.reco_link}
                                             description={result.reco_description}
                                             keywords={result.reco_keywords}
@@ -100,6 +127,7 @@ class Search extends Component {
                             ) : (
                                     <h3 className="text-center">{this.state.prompt}</h3>
                                 )}
+                                
                         </Card>
 
 

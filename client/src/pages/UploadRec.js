@@ -66,7 +66,6 @@ function UploadRec({ username }) {
                 .then(picData => {
                     var imageStr =
                         arrayBufferToBase64(picData.data.reco_pic.data.data);
-                    console.log()
                     if(!picData.data._id === reco.reco_pic) {
                         return;
                     }
