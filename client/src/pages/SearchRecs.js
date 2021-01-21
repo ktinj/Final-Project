@@ -12,7 +12,7 @@ class Search extends Component {
     state = {
         recoResults: [],
         searchTerm: "",
-        prompt: "Search For a Product Recommendation"
+        prompt: ""
     };
 
     arrayBufferToBase64 = buffer => {
@@ -107,8 +107,8 @@ class Search extends Component {
                                             date={result.reco_date}
                                             Button={() => (
                                                 <button
-                                                    className="btn btn-dark ml-2"
-                                                    onClick={() => this.handleRecoSave(result._id)}>Save Recommendation</button>
+                                                    className="button"
+                                                    onClick={() => this.handleRecoSave(result._id)}><a>Save &#9829;</a></button>
                                             )}
 
                                         />

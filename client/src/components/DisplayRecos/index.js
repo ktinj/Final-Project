@@ -26,7 +26,7 @@ function DisplaySavedRecos({ title, pic, link, description, keywords, date, Butt
                     <p>Created On: {date}</p><br></br>
                     <p>Description: {description}</p>
                     <p>Keywords: {keywords}</p>
-                    <a href={link}>Click to purchase</a>
+                    <a href={link} target="_blank" rel="noopener noreferrer">Click to purchase</a>
                 </Col>
             </Row>
             <Row>
