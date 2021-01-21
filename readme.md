@@ -1,11 +1,11 @@
-<h1 align=center>React Portfolio</h1>
+<h1 align=center>Perch Review</h1>
 
 ![badge](https://img.shields.io/badge/license-ISC-brightgreen)
 
 - Link to GitHub repository: https://github.com/ktinj/Final-Project
 - Link to deployed site: https://perch-review.herokuapp.com/
 
-![Image of application](public/assets/reactPortresize.jpg)
+![Image of application](client/public/assets/PerchPhoto.png)
 
 ## Description
 - WONDERFUL DESCRIPTION HERE
