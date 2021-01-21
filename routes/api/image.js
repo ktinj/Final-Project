@@ -5,6 +5,8 @@ const imageController = require("../../controllers/imgController");
 router.route("/")
 //   .get(recosController.findAll)
   .post(imageController.create)
-  .get(imageController.findAll)
+
+router.route("/:id")
+  .get(imageController.findById)  
 
 module.exports = router;
