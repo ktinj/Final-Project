@@ -22,9 +22,9 @@ class Search extends Component {
         return window.btoa(binary);
     };
 
-    componentDidUpdate = () => {
-        return this.getImg(this.state.recoResults);
-    }
+    // componentDidMount = () => {
+    //     return this.getImg(this.state.recoResults);
+    // }
 
     getImg = (recos) => {
         var base64Flag = 'data:image/jpeg;base64,';
@@ -61,7 +61,7 @@ class Search extends Component {
             .then(res =>
                 this.setState({
                     recoResults: res.data
-                })
+                },() => { this.getImg(this.state.recoResults); })
             )
             .catch(() =>
                 this.setState({
@@ -110,7 +110,6 @@ class Search extends Component {
                                                     className="button"
                                                     onClick={() => this.handleRecoSave(result._id)}><a>Save &#9829;</a></button>
                                             )}
-
                                         />
                                     ))}
                                 </List>
@@ -123,7 +122,7 @@ class Search extends Component {
                 </Row>
                 <Row>
                     <p class="center">
-                        <button><Link to={"/uploadRec"}>Give A Recommendation </Link></button>
+                        <button><Link to={"/uploadRec"}>Make A Recommendation </Link></button>
                     </p><br></br><br></br>
                 {/* </Row>
                 <Row> */}
