@@ -36,6 +36,9 @@ This project is covered by the ISC license.
 - GREAT FUTURE THINGS
 
 ## Contributors
+- Adriana Soler
+- Kentaro Kinoshita
+- Kristen Jacobsen
 - Talia Zisman
 
 ## Testing
@@ -45,13 +48,13 @@ This project can be tested by following the usage instructions.
 Please contact the contributors of this application with any questions.
 - Adriana Soler
     - Email: asoler000@gmail.com
-    - GitHub: [](http://github.com/)
+    - GitHub: [asoler000](http://github.com/asoler000)
 - Kentaro Kinoshita
-    - Email: tzcodes101@gmail.com
-    - GitHub: [tzcodes101](http://github.com/tzcodes101)
+    - Email: mixmix0321@gmail.com
+    - GitHub: [KentaroKinoShita](http://github.com/KentaroKinoShita)
 - Kristin Jacobsen
     - Email: kristinjacobsenn@gmail.com
-    - GitHub: [](http://github.com/tzcodes101)
+    - GitHub: [ktinj](http://github.com/ktinj)
 - Talia Zisman
     - Email: tzcodes101@gmail.com
     - GitHub: [tzcodes101](http://github.com/tzcodes101)
