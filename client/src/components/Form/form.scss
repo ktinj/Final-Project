@@ -1,0 +1,111 @@
+
+form {
+  display: inline-block;
+  padding-top: -200;
+  margin-top: 10px;
+  align-items: center;
+  width: 400px;
+  /* padding: 10px !important; */
+}
+
+Input {
+  border: 0 !important;
+}
+
+.Input[type=text], textarea {
+  background-color: white;
+  font-size: 7px;
+  outline: none !important;
+}
+
+// // .FormBtn {
+// //   border-radius: 20px!important;
+//   // border: 1px solid black !important;
+//   padding-left: 40px !important;
+//   padding-right: 40px !important;
+//   width: auto !important;
+//   font-size: 10px;
+// }
+
+TextArea {
+  font-size: 10px;
+}
+
+.btn {
+  color: white;
+  box-shadow: -5px -5px 20px white,  5px 5px 20px #BABECC !important;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  border: 0px !important;
+  
+  &:hover {
+    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px white !important;
+  }
+  
+  &:active {
+    box-shadow: inset 1px 1px 2px #BABECC; inset: -1px -1px 2px white !important;
+  }
+}
+// .btn {
+//   border-radius: 20px!important;
+//   border: 1px solid black !important;
+//   padding-left: 40px !important;
+//   padding-right: 40px !important;
+//   width: auto !important;
+//   font-size: 10px;
+// }
+
+p {
+  color: #000000;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+p1 {
+  color: black;
+  font-family: 'Cormorant Garamond', serif !important;
+  font-size: 45px;
+  text-transform: none;
+  font-weight: lighter;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: -2px;
+}
+
+p2 {
+  color: #000000;
+  font-family: 'Cormorant Garamond', serif !important;
+  font-size: 30px;
+  text-transform: uppercase;
+  text-align: center;
+}
+.form-group {
+  // color: #000000;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  text-align: center;
+}
+.form-control {
+  font-family: 'Cormorant Garamond', serif !important;
+  size: 8px !important;
+  text-transform: lowercase;
+  text-align: center;
+  border: 0 !important;
+}
+.form-control:focus {
+  border-radius: 20px !important;
+  box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px white !important;
+  transition: all 0.2s ease-in-out !important;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.form-control[type=text] {
+  color: #000000;
+  font-family: 'Montserrat', sans-serif;
+  size:8px !important;
+  text-transform: lowercase;
+  text-align: center !important;
+}

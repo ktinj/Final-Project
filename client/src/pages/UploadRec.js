@@ -235,18 +235,20 @@ function UploadRec({ username }) {
             <Container>
                 <Row>
                     <Col size='md-12'>
-
-
-                        <Card title="Upload a Recommendation">
+                        <Card>
+                            <p1>Give a recommendation</p1>
                             <form>
                                 <div className="form-group">
-                                    <Input value={formObject.reco_name} onChange={handleInputChange} name='reco_name' placeholder='Title' />
+                                    <p>Name your recommendation</p>
+                                    <Input value={formObject.reco_name} onChange={handleInputChange} name='reco_name' placeholder='title' />
+                                    <p>Why do you recommend it?</p>
                                     <Input className='form-control' value={formObject.reco_description} onChange={handleInputChange} name='reco_description' placeholder='description' />
                                     {/* <Input className='form-control' value={formObject.reco_pic} onChange={handleInputChange} name='reco_pic' placeholder='pic' /> */}
+                                    <p>Provide a link to purchase</p>
                                     <Input className='form-control' value={formObject.reco_link} onChange={handleInputChange} name='reco_link' placeholder='link' />
+                                    <p>Enter some keywords</p>
                                     <Input className='form-control' value={formObject.reco_keywords} onChange={handleInputChange} name='reco_keywords' placeholder='keywords' />
-
-
+                                    <p>Upload an image</p>
                                     <div className="file-upload">
                                         {message ? <Message msg={message} /> : null}
                                         <div className='custom-file mb-4'>
@@ -273,8 +275,6 @@ function UploadRec({ username }) {
                                                 </div>
                                             </div>
                                         ) : null}
-
-
                                     </div>
                                 </div>
                             </form>
@@ -283,7 +283,7 @@ function UploadRec({ username }) {
                         <FormBtn
                             disabled={!formObject.reco_name}
                             onClick={onSubmit}>
-                            Upload Recommendation
+                            <a>Upload Recommendation</a>
 				</FormBtn>
                     </Col>
 
@@ -305,10 +305,9 @@ function UploadRec({ username }) {
                                             date={result.reco_date}
                                             Button={() => (
                                                 <button
-                                                    className="btn btn-dark ml-2"
-                                                    onClick={() => this.handleRecoSave(result._id)}>Save Recommendation</button>
+                                                    className="button"
+                                                    onClick={() => this.handleRecoSave(result._id)}><a>Save &#9829;</a></button>
                                             )}
-
                                         />
                                     ))}
                                 </List>

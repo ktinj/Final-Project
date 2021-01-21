@@ -34,7 +34,8 @@ render() {
     <Container>
         <Row>
         <Col size="md-12">
-            <Card title="Saved Recommendations" icon="far fa-heart">
+            <p1>Saved Recommendations</p1>
+            <Card>
             {this.state.recos.length > 0 ? (
                 <List>
                 {this.state.recos.map(reco => (
@@ -49,9 +50,9 @@ render() {
                     Button={() => (
                         <button
                         onClick={() => this.handleRecoDelete(reco._id)}
-                        className="btn btn-danger ml-2"
+                        className="btn"
                         >
-                        Delete
+                        <a>delete</a>
                         </button>
                     )}
                     />

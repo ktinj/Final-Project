@@ -4,13 +4,12 @@ const mongoose = require("mongoose");
 const { mongoOptions, sessionOptions } = require("./utils/config");
 const routes = require("./routes");
 const app = express();
-const fileUpload = require("express-fileupload");
 const session = require("express-session");
 // Requiring passport as we've configured it
 const passport = require("./utils/passport");
 const logger = require("morgan");
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 app.use(fileUpload());
 
 

@@ -36,8 +36,8 @@ function Nav () {
         If you like something, put it on <b>Perch.</b><br></br></p>
         </Modal.Body>
         <Modal.Footer>
-        <Button variant="light" onClick={handleClose}>
-        <a><b>Close</b></a>
+        <Button class="close" onClick={handleClose}>
+        <a><b>X</b></a>
         </Button>
         </Modal.Footer>
         </Modal>
