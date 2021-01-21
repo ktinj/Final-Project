@@ -12,9 +12,6 @@ class Search extends Component {
     state = {
         recoResults: [],
         searchTerm: "",
-<<<<<<< HEAD
-        prompt: "search results here"
-=======
         prompt: "Search For a Product Recommendation"
     };
 
@@ -27,7 +24,6 @@ class Search extends Component {
 
     componentDidUpdate = () => {
         return this.getImg(this.state.recoResults);
->>>>>>> 9fbcda2406b379b864902fc81aacef3d41f069c3
     }
 
     getImg = (recos) => {
