@@ -299,7 +299,7 @@ function UploadRec({ username }) {
                             // onClick={handleFormSubmit}>
                             onClick={onSubmit}>
                             Upload Recommendation
-				</FormBtn>
+				        </FormBtn>
                     </Col>
 
                 </Row>
