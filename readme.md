@@ -8,7 +8,7 @@
 ![Image of application](client/public/assets/PerchPhoto.png)
 
 ## Description
-Perch Review is an unbiased product recommendation application, made by users for users. A user can upload, search by keyword, and save recommendations for later purchase. This project is a MERN application and uses express-file-upload npm to upload images from a user's computer.
+Perch Review is an unbiased product recommendation application, made by users for users. A user can upload, search by keyword, and save recommendations for later purchase. This project is a MERN application and uses the npm package express-file-upload to upload images from a user's computer.
 
 - User Story: I want to be able to create, view, and access real recommendations so that I can make, and help others make, an informed purchase more quickly.  
 
