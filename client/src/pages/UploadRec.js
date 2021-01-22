@@ -150,13 +150,8 @@ function UploadRec({ username }) {
             <Container>
                 <Row>
                     <Col size='md-12'>
-<<<<<<< HEAD
-                        <Card>
-                            <p1>Give a recommendation</p1>
-=======
                         <p1>Make a recommendation</p1>
                         <Card>
->>>>>>> ff01ad0894d833d7cce9af6a3fedbad58ed66a50
                             <form>
                                 <div className="form-group">
                                     <p>Name your recommendation</p>
@@ -197,17 +192,11 @@ function UploadRec({ username }) {
                                 </div>
                             </form>
                         </Card>
-
                         <FormBtn
                             disabled={!formObject.reco_name}
                             onClick={onSubmit}>
-<<<<<<< HEAD
-                            <a>Upload Recommendation</a>
-				</FormBtn>
-=======
-                            Upload Recommendation
+                            <a><b>Upload Recommendation</b></a>
 				        </FormBtn>
->>>>>>> ff01ad0894d833d7cce9af6a3fedbad58ed66a50
                     </Col>
 
                 </Row>
@@ -229,7 +218,7 @@ function UploadRec({ username }) {
                                             Button={() => (
                                                 <button
                                                     className="button"
-                                                    onClick={() => this.handleRecoSave(result._id)}><a>Save &#9829;</a></button>
+                                                    onClick={() => this.handleRecoSave(result._id)}><a>Save</a></button>
                                             )}
                                         />
                                     ))}

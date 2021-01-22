@@ -21,6 +21,7 @@ li {
     float: right;
 }
 
+/* close button for about modal */
 .closeButton {
     border: 0 !important;
     font-size: 10px !important;

@@ -12,11 +12,7 @@ class Search extends Component {
     state = {
         recoResults: [],
         searchTerm: "",
-<<<<<<< HEAD
-        prompt: "Search For a Product Recommendation"
-=======
         prompt: ""
->>>>>>> ff01ad0894d833d7cce9af6a3fedbad58ed66a50
     };
 
     arrayBufferToBase64 = buffer => {
@@ -26,15 +22,9 @@ class Search extends Component {
         return window.btoa(binary);
     };
 
-<<<<<<< HEAD
-    componentDidUpdate = () => {
-        return this.getImg(this.state.recoResults);
-    }
-=======
-    // componentDidMount = () => {
+    // componentDidUpdate = () => {
     //     return this.getImg(this.state.recoResults);
     // }
->>>>>>> ff01ad0894d833d7cce9af6a3fedbad58ed66a50
 
     getImg = (recos) => {
         var base64Flag = 'data:image/jpeg;base64,';
@@ -127,7 +117,7 @@ class Search extends Component {
                                                         description: result.reco_description,
                                                         keywords: result.reco_keywords,
                                                         date: result.date
-                                                    })}><a>Save &#9829;</a></button>
+                                                    })}><a>Save</a></button>
                                             )}
                                         />
                                     ))}

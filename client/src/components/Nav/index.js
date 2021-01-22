@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import NavLogo from "./PERCH (22).png";
+import NavLogo from "./PERCH (2).png";
 import AboutLogo from "./PERCH (23).png";
 import { Link } from "react-router-dom";
 import "./style.css";
