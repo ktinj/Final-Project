@@ -10,7 +10,7 @@
 }
 
 .card {
-    background-color: #f1ece2;
+    background-color: white;
     text-align: center;
     text-transform: lowercase;
     border: 0 !important;
@@ -19,7 +19,6 @@
 }
 
 .card-text-center {
-    background-color: #f1ece2;
     text-align: center;
     text-transform: lowercase;
     border: 0 !important;
