@@ -3,9 +3,10 @@ const saveController = require("../../controllers/saveController");
 
 router
   .route("/")
-  .get(saveController.findByUser)
-router
-  .route("/:id")
-  .post(saveController.findAndUpdate)
+  .post(saveController.create)
+  .get(saveController.findAll)
+// router
+//   .route("/:id")
+//   .post(saveController.findAndUpdate)
 
 module.exports = router;
