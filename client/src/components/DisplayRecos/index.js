@@ -23,14 +23,14 @@ function DisplaySavedRecos({ title, pic, link, description, keywords, date, Butt
             </Row>
             <Row>
                 <Col size="md-12">
-                    <p>Created On: {date}</p><br></br>
-                    <p>Description: {description}</p>
-                    <p>Keywords: {keywords}</p>
+                    <p2><b>Created On:</b> {date}</p2><br></br>
+                    <p2><b>Description:</b> {description}</p2><br></br>
+                    <p2><b>Keywords:</b> {keywords}</p2><br></br><br></br>
                     <a href={link} target="_blank" rel="noopener noreferrer">Click to purchase</a>
                 </Col>
             </Row>
             <Row>
-                <Col size="12 sm-4 md-2">
+                <Col size="12">
                     <img className="img-thumbnail img-fluid w-100" src={pic} alt={title} />
                 </Col>
             </Row>

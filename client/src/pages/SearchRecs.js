@@ -108,7 +108,7 @@ class Search extends Component {
                                             Button={() => (
                                                 <button
                                                     className="button"
-                                                    onClick={() => this.handleRecoSave(result._id)}><a>Save &#9829;</a></button>
+                                                    onClick={() => this.handleRecoSave(result._id)}>&#128153;</button>
                                             )}
                                         />
                                     ))}

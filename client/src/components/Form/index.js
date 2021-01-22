@@ -1,5 +1,6 @@
 import React from "react";
-import "./form.scss";
+import "./style.scss";
+import mainLogo from "./PERCH.png";
 
 // This file exports the Input, TextArea, and FormBtn components
 
@@ -26,7 +27,7 @@ export function Form({ searchTerm, handleInputChange, handleFormSubmit }) {
 	return (
 		
 		<form>
-			<p1>welcome to perch</p1>
+			<img src={mainLogo} class="center" alt="main Logo"/>
 			<div className="search-bar">
 				<input className="form-control"
 					id="search-title"
