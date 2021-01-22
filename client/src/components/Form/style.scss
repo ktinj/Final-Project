@@ -4,11 +4,13 @@ form {
   padding-top: -200;
   margin-top: 10px;
   align-items: center;
-  width: 500px;
+  width: 300px;
 }
 
 Input {
   border: 0 !important;
+  width: 300px !important;
+  margin: auto !important;
 }
 
 .Input[type=text], textarea {
@@ -40,16 +42,15 @@ TextArea {
 p {
   color: #000000;
   font-family: 'Montserrat', sans-serif;
-  font-size: 12px;
+  font-size: 14px;
   text-transform: uppercase;
   text-align: center;
-  font-weight: bold;
 }
 
 p1 {
   color: black;
   font-family: 'Cormorant Garamond', serif !important;
-  font-size:40px;
+  font-size: 30px;
   text-transform: none;
   font-weight: lighter;
   text-align: center;
@@ -75,7 +76,7 @@ p2 {
 
 .form-control {
   font-family: 'Cormorant Garamond', serif !important;
-  // box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px white !important;
+  box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px white !important;
   size: 8px !important;
   text-transform: lowercase;
   color: blue !important;

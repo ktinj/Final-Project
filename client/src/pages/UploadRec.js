@@ -196,7 +196,7 @@ function UploadRec({ username }) {
                                     </div>
                                 </div>
                             </form>
-                        </Card><br></br>
+                        </Card>
                         <FormBtn
                                 isabled={!formObject.reco_name}
                                 onClick={onSubmit}>
@@ -221,8 +221,8 @@ function UploadRec({ username }) {
                                             date={result.date}
                                             Button={() => (
                                                 <button
-                                                    className="btn"
-                                                    onClick={() => this.handleRecoSave(result._id)}><a>SAVE</a></button>
+                                                    className="button"
+                                                    onClick={() => this.handleRecoSave(result._id)}><a>Save&#9829;</a></button>
                                             )}
                                         />
                                     ))}
