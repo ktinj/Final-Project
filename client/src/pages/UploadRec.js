@@ -196,8 +196,8 @@ function UploadRec({ username }) {
                         <FormBtn
                             disabled={!formObject.reco_name}
                             onClick={onSubmit}>
-                            <p>Upload Recommendation</p>
-				</FormBtn>
+                            Upload Recommendation
+				        </FormBtn>
                     </Col>
 
                 </Row>

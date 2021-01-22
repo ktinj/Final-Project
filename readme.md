@@ -1,59 +1,65 @@
-# 📦 M-E-R-N + passport box
+<h1 align=center>Perch Review</h1>
 
-<!-- ##### :earth_africa: [live]() on heroku -->
+![badge](https://img.shields.io/badge/license-ISC-brightgreen)
 
-## 🍽 Use
--   Fork, or clone and copy what you need
+- Link to GitHub repository: https://github.com/ktinj/Final-Project
+- Link to deployed site: https://perch-review.herokuapp.com/
 
-### 🗃️ Folder structure
+![Image of application](client/public/assets/PerchPhoto.png)
+
+## Description
+Perch Review is an unbiased product recommendation application, made by users for users. A user can upload, search by keyword, and save recommendations for later purchase. This project is a MERN application and uses the npm package express-file-upload to upload images from a user's computer.
+
+- User Story: I want to be able to create, view, and access real recommendations so that I can make, and help others make, an informed purchase more quickly.  
 
 
-```
-.
-├── _assets                <- # project management assets
-├── client                 <- # front end react app                        
-│   ├── README.md          <- # create react app readme
-│   ├── package.json       <- # create react app dev server (hot reloading)
-│   ├── public             <- # front end static files 
-│   │   ├── favicon.ico
-│   │   ├── index.html
-│   │   └── manifest.json
-│   └── src                <- # font end source (can also place static files to be packed with webpack)
-│       ├── App.js         <- # 🚀 react app entry point 
-│       ├── components     <- # reusable components
-│       │   ├── Card
-│       │   ├── DeleteBtn
-│       │   ├── Form
-│       │   ├── Grid
-│       │   ├── Head
-│       │   ├── **ProtectedRoute** <- # protected routes (HOC)
-│       │   └── Table
-│       ├── index.js
-│       ├── pages             <- # page components
-│       ├── style.css
-│       └── **utils**         <- # front end utils
-│           ├── API.js        <- # coments routes front end api
-│           ├── useLogPath.js <- # custom hook for development - logs current path
-│           └── userAPI.js    <- # user routes front end api
-├────────────────────────── **☝️ client 👇 server**
-├── controllers               <- # routes function
-│   ├── commentsController.js
-│   └── userController.js
-├── models                    <- # Schemas
-│   ├── Comment.js
-│   ├── User.js
-│   └── index.js
-├── routes                    <- # routes (only API routes)
-│   ├── api
-│   │   ├── comments.js
-│   │   ├── index.js
-│   │   └── user.js
-│   └── index.js
-├── utils                     <- # server helper functions 
-│   ├── config.js             <- # global config (put anything you like)
-│   ├── passport.js           <- # passport setup
-│   └── seedDB.js             <- # seed script
-├── package.json
-├── readme.md
-└── server.js                 <- # 🚀 entry point
-```
+## Table of Contents
+- [Description](#Description)
+- [Installation](#Installation)
+- [Usage](#Usage)
+- [License](#License)
+- [FutureDevelopment](#FutureDevelopment)
+- [Contributors](#Contributors)
+- [Testing](#Testing)
+- [Questions](#Questions)
+
+## Installation
+This project requires no installation.
+
+## Usage
+To use this project, a user must navigate to the deployed URL. 
+
+## License
+![badge](https://img.shields.io/badge/license-ISC-brightgreen)
+
+This project is covered by the ISC license.
+
+## Future Development
+- Code simplification to POST the upload recommendation and image as one reqeust. 
+- Creation of a trending page based on past user searches.
+- Implementation of a recommendation detail page to enable a user to view one recommendation more closely. 
+- When a user uploads a product, they can also add a charity for others to donate to; "Paying it forward."
+
+## Contributors
+- Adriana Soler
+- Kentaro Kinoshita
+- Kristen Jacobsen
+- Talia Zisman
+
+## Testing
+This project can be tested by following the usage instructions.
+
+## Questions
+Please contact the contributors of this application with any questions.
+- Adriana Soler
+    - Email: asoler000@gmail.com
+    - GitHub: [asoler000](http://github.com/asoler000)
+- Kentaro Kinoshita
+    - Email: mixmix0321@gmail.com
+    - GitHub: [KentaroKinoShita](http://github.com/KentaroKinoShita)
+- Kristin Jacobsen
+    - Email: kristinjacobsenn@gmail.com
+    - GitHub: [ktinj](http://github.com/ktinj)
+- Talia Zisman
+    - Email: tzcodes101@gmail.com
+    - GitHub: [tzcodes101](http://github.com/tzcodes101)
