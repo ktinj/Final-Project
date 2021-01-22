@@ -9,6 +9,7 @@ import DisplayRecos from "../components/DisplayRecos";
 import Message from "../components/Message";
 import Progress from "../components/Progress";
 import axios from 'axios';
+import make from "../components/Head/PERCH (7).png";
 
 function UploadRec({ username }) {
 
@@ -62,6 +63,7 @@ function UploadRec({ username }) {
             var base64Flag = 'data:image/jpeg;base64,';
             let recosArr = [...recoState.recos];
             recosArr.forEach(reco => {
+                console.log({reco});
                 API.getmyImg(reco.reco_pic)
                 .then(picData => {
                     var imageStr =
@@ -147,19 +149,24 @@ function UploadRec({ username }) {
     return (
         <>
             <Container>
+            <form>
+            <img src={make} class="thumbnail w-25" alt="Make Logo"/>
+            </form>
                 <Row>
                     <Col size='md-12'>
-                        <p1>Make a recommendation</p1>
                         <Card>
                             <form>
                                 <div className="form-group">
-                                    <Input value={formObject.reco_name} onChange={handleInputChange} name='reco_name' placeholder='Title' />
+                                    <p>Name your recommendation</p>
+                                    <Input value={formObject.reco_name} onChange={handleInputChange} name='reco_name' placeholder='title' />
+                                    <p>Why do you recommend it?</p>
                                     <Input className='form-control' value={formObject.reco_description} onChange={handleInputChange} name='reco_description' placeholder='description' />
                                     {/* <Input className='form-control' value={formObject.reco_pic} onChange={handleInputChange} name='reco_pic' placeholder='pic' /> */}
+                                    <p>Provide a link to purchase</p>
                                     <Input className='form-control' value={formObject.reco_link} onChange={handleInputChange} name='reco_link' placeholder='link' />
+                                    <p>Enter some keywords</p>
                                     <Input className='form-control' value={formObject.reco_keywords} onChange={handleInputChange} name='reco_keywords' placeholder='keywords' />
-
-
+                                    <p>Upload an image</p>
                                     <div className="file-upload">
                                         {message ? <Message msg={message} /> : null}
                                         <div className='custom-file mb-4'>
@@ -175,9 +182,7 @@ function UploadRec({ username }) {
                                                 {filename}
                                             </label>
                                         </div>
-
                                         <Progress percentage={uploadPercentage} />
-
                                         {uploadedFile ? (
                                             <div className='row mt-5'>
                                                 <div className='col-md-6 m-auto'>
@@ -186,17 +191,14 @@ function UploadRec({ username }) {
                                                 </div>
                                             </div>
                                         ) : null}
-
-
                                     </div>
                                 </div>
                             </form>
                         </Card>
-
                         <FormBtn
                             disabled={!formObject.reco_name}
                             onClick={onSubmit}>
-                            Upload Recommendation
+                            <a><b>Upload Recommendation</b></a>
 				        </FormBtn>
                     </Col>
 
@@ -219,9 +221,8 @@ function UploadRec({ username }) {
                                             Button={() => (
                                                 <button
                                                     className="button"
-                                                    onClick={() => this.handleRecoSave(result._id)}><a>Save &#9829;</a></button>
+                                                    onClick={() => this.handleRecoSave(result._id)}><a>Save</a></button>
                                             )}
-
                                         />
                                     ))}
                                 </List>

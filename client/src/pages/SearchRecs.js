@@ -22,7 +22,7 @@ class Search extends Component {
         return window.btoa(binary);
     };
 
-    // componentDidMount = () => {
+    // componentDidUpdate = () => {
     //     return this.getImg(this.state.recoResults);
     // }
 
@@ -117,7 +117,7 @@ class Search extends Component {
                                                         description: result.reco_description,
                                                         keywords: result.reco_keywords,
                                                         date: result.date
-                                                    })}><a>Save &#9829;</a></button>
+                                                    })}><a>Save</a></button>
                                             )}
                                         />
                                     ))}

@@ -74,8 +74,7 @@ render() {
                     Button={() => (
                         <button
                         onClick={() => this.handleRecoDelete(reco._id)}
-                        className="btn"
-                        >
+                        className="button">
                         <a>delete</a>
                         </button>
                     )}

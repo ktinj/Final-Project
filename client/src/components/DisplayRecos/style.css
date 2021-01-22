@@ -1,8 +1,8 @@
 .btn-container {
-    float: right !important;
-    padding-left: 600px !important;
-    
+    padding-left: 450px !important;  
 }
+    
+
 @media (max-width: 767px) {
     .btn-container {
         margin-bottom: 10px;
@@ -10,7 +10,6 @@
 }
 .btn {
     border-radius: 20px!important;
-    /* border: 1px solid black !important; */
     padding-left: 20px !important;
     padding-right: 20px !important;
     width: auto !important;
@@ -20,10 +19,10 @@
 
 Button {
     border-radius: 20px!important;
-    /* border: 1px solid black !important; */
     padding-left: 10px !important;
     padding-right: 10px !important;
     width: auto !important;
     font-size: 10px;
     font-family: 'Montserrat', sans-serif;
 }
+
