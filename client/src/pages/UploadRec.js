@@ -77,7 +77,6 @@ function UploadRec({ username }) {
             
         }
 
-
     }, [recoState.recos.length])
 
     //load all reco uploads belong to the user who is signed in
@@ -151,8 +150,13 @@ function UploadRec({ username }) {
             <Container>
                 <Row>
                     <Col size='md-12'>
+<<<<<<< HEAD
                         <Card>
                             <p1>Give a recommendation</p1>
+=======
+                        <p1>Make a recommendation</p1>
+                        <Card>
+>>>>>>> ff01ad0894d833d7cce9af6a3fedbad58ed66a50
                             <form>
                                 <div className="form-group">
                                     <p>Name your recommendation</p>
@@ -197,8 +201,13 @@ function UploadRec({ username }) {
                         <FormBtn
                             disabled={!formObject.reco_name}
                             onClick={onSubmit}>
+<<<<<<< HEAD
                             <a>Upload Recommendation</a>
 				</FormBtn>
+=======
+                            Upload Recommendation
+				        </FormBtn>
+>>>>>>> ff01ad0894d833d7cce9af6a3fedbad58ed66a50
                     </Col>
 
                 </Row>

@@ -36,13 +36,13 @@ function Nav () {
         If you like something, put it on <b>Perch.</b><br></br></p>
         </Modal.Body>
         <Modal.Footer>
-        <Button variant="light" onClick={handleClose}>
-        <a><b>Close</b></a>
+        <Button class="close" onClick={handleClose}>
+        <a><b>X</b></a>
         </Button>
         </Modal.Footer>
         </Modal>
                 <li className="nav-right">
-                    <Link to={"/uploadRec"}>Give a Recommendation</Link></li>
+                    <Link to={"/uploadRec"}>Make a Recommendation</Link></li>
                 <li className="nav-right">
                     <Link to={"/searchRec"}>Search for a Recommendation</Link></li>
                     

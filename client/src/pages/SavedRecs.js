@@ -10,12 +10,36 @@ state = {
     recos: []
 };
 
+arrayBufferToBase64 = buffer => {
+    var binary = '';
+    var bytes = [].slice.call(new Uint8Array(buffer));
+    bytes.forEach((b) => binary += String.fromCharCode(b));
+    return window.btoa(binary);
+};
+
+getImg = (recos) => {
+    var base64Flag = 'data:image/jpeg;base64,';
+    let recosArr = recos;
+    recosArr.forEach(reco => {
+        API.getmyImg(reco.reco_pic)
+        .then(picData => {
+            var imageStr =
+                this.arrayBufferToBase64(picData.data.reco_pic.data.data);
+            if(!picData.data._id === reco.reco_pic) {
+                return;
+            }
+            reco.image = base64Flag + imageStr;
+            this.setState({recos: recosArr});
+        })
+    })
+};
+
 getSavedRecos = () => {
     API.getSavedRecos()
     .then(res =>
         this.setState({
         recos: res.data
-        })
+        }, () => this.getImg(this.state.recos))
     )
     .catch(err => console.log(err));
 };
@@ -34,24 +58,25 @@ render() {
     <Container>
         <Row>
         <Col size="md-12">
-            <Card title="Saved Recommendations" icon="far fa-heart">
+            <p1>Saved Recommendations</p1>
+            <Card>
             {this.state.recos.length > 0 ? (
                 <List>
                 {this.state.recos.map(reco => (
                     <DisplayRecos
                     key={reco._id}
                     title={reco.reco_name}
-                    pic={reco.reco_pic}
+                    pic={reco.image}
                     link={reco.reco_link}
                     description={reco.reco_description}
                     keywords={reco.reco_keywords}
-                    date={reco.reco_date}
+                    date={reco.date}
                     Button={() => (
                         <button
                         onClick={() => this.handleRecoDelete(reco._id)}
-                        className="btn btn-danger ml-2"
+                        className="btn"
                         >
-                        Delete
+                        <a>delete</a>
                         </button>
                     )}
                     />

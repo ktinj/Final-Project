@@ -1,8 +1,8 @@
 import React, { Fragment, useState } from 'react';
 import Message from '../Message';
+import { Row } from "..Grid";
 import Progress from '../Progress';
 import axios from 'axios';
-import "./style.css";
 
 const FileUpload = () => {
     const [file, setFile] = useState('');
@@ -54,6 +54,7 @@ setMessage('File Uploaded');
 
 return (
     <Fragment>
+        <Row>
         {message ? <Message msg={message} /> : null}
         <form onSubmit={onSubmit}>
         <div className='custom-file mb-4'>
@@ -73,7 +74,7 @@ return (
         <input
             type='submit'
             value='Upload'
-            className='btn'
+            className='button'
         />
     </form>
     {uploadedFile ? (
@@ -84,7 +85,9 @@ return (
         </div>
         </div>
     ) : null}
-    </Fragment>
+    </Row>
+</Fragment>
+
 );
 };
 

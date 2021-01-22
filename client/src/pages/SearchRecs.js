@@ -12,7 +12,11 @@ class Search extends Component {
     state = {
         recoResults: [],
         searchTerm: "",
+<<<<<<< HEAD
         prompt: "Search For a Product Recommendation"
+=======
+        prompt: ""
+>>>>>>> ff01ad0894d833d7cce9af6a3fedbad58ed66a50
     };
 
     arrayBufferToBase64 = buffer => {
@@ -22,9 +26,15 @@ class Search extends Component {
         return window.btoa(binary);
     };
 
+<<<<<<< HEAD
     componentDidUpdate = () => {
         return this.getImg(this.state.recoResults);
     }
+=======
+    // componentDidMount = () => {
+    //     return this.getImg(this.state.recoResults);
+    // }
+>>>>>>> ff01ad0894d833d7cce9af6a3fedbad58ed66a50
 
     getImg = (recos) => {
         var base64Flag = 'data:image/jpeg;base64,';
@@ -61,7 +71,7 @@ class Search extends Component {
             .then(res =>
                 this.setState({
                     recoResults: res.data
-                })
+                },() => { this.getImg(this.state.recoResults); })
             )
             .catch(() =>
                 this.setState({
@@ -71,10 +81,11 @@ class Search extends Component {
             );
     };
 
-    handleRecoSave = id => {
+    handleRecoSave = reco => {
         // const reco = this.state.recoResults.find(reco => reco.id === id);
-        console.log(id)
-        API.saveReco(id).then(() => this.getSearchedRecos())
+        console.log(reco)
+        API.saveReco(reco)
+        // .then(() => this.getSearchedRecos())
     }
 
     render() {
@@ -104,13 +115,20 @@ class Search extends Component {
                                             link={result.reco_link}
                                             description={result.reco_description}
                                             keywords={result.reco_keywords}
-                                            date={result.reco_date}
+                                            date={result.date}
                                             Button={() => (
                                                 <button
-                                                    className="btn btn-dark ml-2"
-                                                    onClick={() => this.handleRecoSave(result._id)}>Save Recommendation</button>
+                                                    className="button"
+                                                    onClick={() => this.handleRecoSave({
+                                                        key: result._id,
+                                                        title: result.reco_name,
+                                                        pic: result.reco_pic,
+                                                        link: result.reco_link,
+                                                        description: result.reco_description,
+                                                        keywords: result.reco_keywords,
+                                                        date: result.date
+                                                    })}><a>Save &#9829;</a></button>
                                             )}
-
                                         />
                                     ))}
                                 </List>
@@ -123,7 +141,7 @@ class Search extends Component {
                 </Row>
                 <Row>
                     <p class="center">
-                        <button><Link to={"/uploadRec"}>Give A Recommendation </Link></button>
+                        <button><Link to={"/uploadRec"}>Make A Recommendation </Link></button>
                     </p><br></br><br></br>
                 {/* </Row>
                 <Row> */}

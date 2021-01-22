@@ -11,7 +11,8 @@ const UserSchema = new mongoose.Schema({
   username: {
     required: true,
     type: String,
-    trim: true
+    trim: true,
+    unique: true
   },
   password: {
     type: String,
@@ -26,7 +27,7 @@ const UserSchema = new mongoose.Schema({
   saved: [
     {
       type: mongoose.Types.ObjectId,
-      ref: "Recos"
+      ref: "Saved"
     }
   ]
   // ..anything else you want on your user

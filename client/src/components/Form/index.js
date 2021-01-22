@@ -1,5 +1,5 @@
 import React from "react";
-import "./form.css";
+import "./form.scss";
 
 // This file exports the Input, TextArea, and FormBtn components
 

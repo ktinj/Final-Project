@@ -22,8 +22,8 @@ export default {
   },
 
   //saves a Reco
-  saveReco: function (id) {
-    return axios.post("/api/savedRec/" + id);
+  saveReco: function (reco) {
+    return axios.post("/api/savedRec", reco);
   },
 
   //gets recos a specific user has saved
