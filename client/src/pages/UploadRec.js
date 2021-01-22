@@ -9,6 +9,7 @@ import DisplayRecos from "../components/DisplayRecos";
 import Message from "../components/Message";
 import Progress from "../components/Progress";
 import axios from 'axios';
+import make from "../components/Head/PERCH (7).png";
 
 function UploadRec({ username }) {
 
@@ -148,9 +149,11 @@ function UploadRec({ username }) {
     return (
         <>
             <Container>
+            <form>
+            <img src={make} class="thumbnail w-25" alt="Make Logo"/>
+            </form>
                 <Row>
                     <Col size='md-12'>
-                        <p1>Make a recommendation</p1>
                         <Card>
                             <form>
                                 <div className="form-group">
