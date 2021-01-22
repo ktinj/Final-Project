@@ -27,7 +27,7 @@ const UserSchema = new mongoose.Schema({
   saved: [
     {
       type: mongoose.Types.ObjectId,
-      ref: "Recos"
+      ref: "Saved"
     }
   ]
   // ..anything else you want on your user

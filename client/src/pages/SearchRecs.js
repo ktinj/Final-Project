@@ -71,10 +71,11 @@ class Search extends Component {
             );
     };
 
-    handleRecoSave = id => {
+    handleRecoSave = reco => {
         // const reco = this.state.recoResults.find(reco => reco.id === id);
-        console.log(id)
-        API.saveReco(id).then(() => this.getSearchedRecos())
+        console.log(reco)
+        API.saveReco(reco)
+        // .then(() => this.getSearchedRecos())
     }
 
     render() {
@@ -104,11 +105,19 @@ class Search extends Component {
                                             link={result.reco_link}
                                             description={result.reco_description}
                                             keywords={result.reco_keywords}
-                                            date={result.reco_date}
+                                            date={result.date}
                                             Button={() => (
                                                 <button
                                                     className="button"
-                                                    onClick={() => this.handleRecoSave(result._id)}><a>Save &#9829;</a></button>
+                                                    onClick={() => this.handleRecoSave({
+                                                        key: result._id,
+                                                        title: result.reco_name,
+                                                        pic: result.reco_pic,
+                                                        link: result.reco_link,
+                                                        description: result.reco_description,
+                                                        keywords: result.reco_keywords,
+                                                        date: result.date
+                                                    })}><a>Save &#9829;</a></button>
                                             )}
                                         />
                                     ))}
