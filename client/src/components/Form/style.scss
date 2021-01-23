@@ -30,7 +30,6 @@ TextArea {
   border: 0px !important;
   
   &:hover {
-    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px white !important;
     color: blue;
   }
   
@@ -42,7 +41,7 @@ TextArea {
 p {
   color: #000000;
   font-family: 'Montserrat', sans-serif;
-  font-size: 14px;
+  font-size: 12px;
   text-transform: uppercase;
   text-align: center;
 }

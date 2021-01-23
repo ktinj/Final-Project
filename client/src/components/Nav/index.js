@@ -14,13 +14,22 @@ function Nav () {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+/* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
+function myFunction() {
+    var x = document.getElementById("navigation");
+    if (x.className === "navigation") {
+    x.className += " responsive";
+    } else {
+    x.className = "navigation";
+    }
+}
 
     return ( 
         <>
         <nav>
-            <ul className="navigation">
+            <ul className="navigation" id="navigation">
                 <Link to="/">
-                <img src={NavLogo} height="120" alt="Nav Logo"/>
+                <img src={NavLogo} height="120" class="responsive" alt="Nav Logo"/>
                 </Link>
                 <li className="nav-right">
                     <Link to={"/"}>Log out</Link></li>
@@ -37,15 +46,18 @@ function Nav () {
         </Modal.Body>
         <Modal.Footer>
         <Button class="close" onClick={handleClose}>
-        <a><b>X</b></a>
+        <a>X</a>
         </Button>
         </Modal.Footer>
         </Modal>
                 <li className="nav-right">
                     <Link to={"/uploadRec"}>Make a Recommendation</Link></li>
+                    <li className="nav-right">
+                    <Link to={"/savedRecs"}>Saved Recommendations</Link></li>
                 <li className="nav-right">
                     <Link to={"/searchRec"}>Search for a Recommendation</Link></li>
-                    
+                    <li className="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i></li>
             </ul>
         </nav>
         </>
