@@ -21,8 +21,9 @@ li {
 }
 
 /* close button for about modal */
-.closeButton {
+close {
     border: 0 !important;
+    background-color: white !important;
     font-size: 10px !important;
     color: #000000 !important;
     font-family: 'Montserrat', sans-serif;

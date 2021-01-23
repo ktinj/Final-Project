@@ -46,12 +46,14 @@ function myFunction() {
         </Modal.Body>
         <Modal.Footer>
         <Button class="close" onClick={handleClose}>
-        <a><b>X</b></a>
+        <a>X</a>
         </Button>
         </Modal.Footer>
         </Modal>
                 <li className="nav-right">
                     <Link to={"/uploadRec"}>Make a Recommendation</Link></li>
+                    <li className="nav-right">
+                    <Link to={"/savedRecs"}>Saved Recommendations</Link></li>
                 <li className="nav-right">
                     <Link to={"/searchRec"}>Search for a Recommendation</Link></li>
                     <li className="javascript:void(0);" class="icon" onclick="myFunction()">
